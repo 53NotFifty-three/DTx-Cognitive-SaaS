@@ -26,13 +26,15 @@ function App(){
     const reactionTime = performance.now() - startTimeRef.current;
     setGameState('idle');
 
+    // 组装要发给后端的医疗数据
     const trialData = {
+      patient_id: "patient_001", // 新增：模拟当前登录的患者ID
       timestamp: new Date().toISOString(),
       target_type: targetType,
       action: 'clicked',
       reaction_time_ms: reactionTime,
       is_correct: targetType === 'go'
-    }
+    };
 
     console.log("Data Captured:", trialData);
 
