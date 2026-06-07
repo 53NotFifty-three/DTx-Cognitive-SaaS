@@ -1,0 +1,10 @@
+# Node.js
+dtx-frontend/node_modules/
+dtx-frontend/dist/
+.env
+
+# Python
+dtx-backend/__pycache__/
+*.pyc
+dtx-backend/venv/
+dtx-backend/env/
