@@ -1,68 +1,34 @@
-import {useState, useRef} from 'react'
+import React, { useState } from 'react';
+import CognitiveGame from './CognitiveGame';
+import DoctorDashboard from './DoctorDashboard';
 
-function App(){
-  const[gameState, setGameState] = useState('idle')
-  const[targetType, setTargetType] = useState(null) //'go' Blue; 'nogo' Red
-  const startTimeRef = useRef(0)
+function App() {
+  const [refreshKey, setRefreshKey] = useState(0);
 
-  const startTrial = () =>{
-    setGameState('waiting')
+  const handleGameComplete = () => {
+    // 游戏结束时，更新 key，强制让底下的医生看板重新触发 useEffect 去 AWS 拉取最新数据
+    setRefreshKey(prev => prev + 1);
+  };
 
-    const randomDely = Math.random() *2000 + 1000;
-
-    setTimeout(()=>{
-      const isGO = Math.random() > 0.2;
-      setTargetType(isGO ? 'go': 'nogo');
-      setGameState('showing_target');
-
-      startTimeRef.current = performance.now();
-
-    }, randomDely);
-  }
-
-  const handleUserClick = async() =>{
-    if(gameState !== 'showing_target') return;
-
-    const reactionTime = performance.now() - startTimeRef.current;
-    setGameState('idle');
-
-    // 组装要发给后端的医疗数据
-    const trialData = {
-      patient_id: "patient_001", // 新增：模拟当前登录的患者ID
-      timestamp: new Date().toISOString(),
-      target_type: targetType,
-      action: 'clicked',
-      reaction_time_ms: reactionTime,
-      is_correct: targetType === 'go'
-    };
-
-    console.log("Data Captured:", trialData);
-
-    await fetch('http://localhost:8000/api/log', { method: 'POST',headers: {'Content-Type': 'application/json'}, body: JSON.stringify(trialData) })
-  }
-
-  return(
-    <div
-      style = {{height:'100vh', display:'flex', flexDirextion:'column', alignItems:'center', justifyContent:'center'}}
-      onClick = {handleUserClick}
-    >
-      <h1>认知训练原型： GO / No-Go</h1>
-      <p>规则：看到蓝色圆圈立刻点击屏幕，看到红色圆圈绝对不要点击。</p>
-
-    {gameState === 'idle' && (
-      <button onClick={(e) => { e.stopPropagation(); startTrial();}} style = {{ padding: '20px'}}>
-        START
-      </button>
-    )}
-
-    {gameState === 'showing_target' && (
-      <div style={{
-        width:'200px',height:'200px', borderRadius: '50%',
-        backgroundColor: targetType === 'go' ? 'blue' : 'red'
-      }} />
-    )}
+  return (
+    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px' }}>
+      <h1 style={{ textAlign: 'center', color: '#1e293b' }}>DTx 认知神经反馈数字疗法平台</h1>
+      <p style={{ textAlign: 'center', color: '#64748b' }}>Track 2: 医疗机构分布式 SaaS 临床控制台</p>
+      <hr style={{ border: '0', height: '1px', background: '#cbd5e1', margin: '20px 0' }} />
+      
+      {/* 1. 患者端核心：20次自动化高频游戏循环 */}
+      <div style={{ background: '#ffffff', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}>
+        <CognitiveGame patientId="patient_001" onGameComplete={handleGameComplete} />
+      </div>
+      
+      <div style={{ margin: '40px 0' }} />
+      
+      {/* 2. 医生端核心：实时医学看板 */}
+      <div style={{ background: '#ffffff', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}>
+        <DoctorDashboard key={refreshKey} patientId="patient_001" />
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

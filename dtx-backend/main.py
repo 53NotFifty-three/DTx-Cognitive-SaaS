@@ -49,3 +49,45 @@ async def log_trial(data: TrialData, db: Session = Depends(get_db)):
     
     print(f"✅ 数据已写入 AWS 云端！患者 {data.patient_id} | 反应时间: {data.reaction_time_ms}ms")
     return {"status": "success", "message": "Data logged to AWS Aurora"}
+
+@app.get("/api/patients/{patient_id}/stats")
+def get_patient_stats(patient_id: str, db: Session = Depends(get_db)):
+    # 完美匹配你现有的 models.TrialLog 模型
+    records = db.query(models.TrialLog).filter(
+        models.TrialLog.patient_id == patient_id
+    ).all()
+    
+    return records
+
+# 模拟一个内存中的医生配置数据库（黑客松速成法，实际项目会存入另一个表）
+# 默认配置：patient_001 是中度(Moderate) ADHD
+DOCTOR_CONFIGS = {
+    "patient_001": {
+        "severity": "Moderate",
+        # 🔥 升级套餐：经典响应 -> 逆向冲突 -> 压轴的精细数量辨识，强制依次进行！
+        "daily_set": ["CLASSIC", "INCONGRUENT", "SHAPE_COUNT"] 
+    }
+}
+
+@app.get("/api/patients/{patient_id}/ai-config")
+def get_patient_ai_config(patient_id: str):
+    config = DOCTOR_CONFIGS.get(patient_id, {"severity": "Moderate", "daily_set": ["CLASSIC", "INCONGRUENT", "SHAPE_COUNT"]})
+    severity = config["severity"]
+    
+    if severity == "Mild":
+        stimulus_duration = 1000  
+        nogo_probability = 0.4    
+    elif severity == "Severe":
+        stimulus_duration = 1600  
+        nogo_probability = 0.2    
+    else: 
+        stimulus_duration = 1300  
+        nogo_probability = 0.3
+        
+    return {
+        "patient_id": patient_id,
+        "severity": severity,
+        "game_sequence": config["daily_set"], 
+        "initial_stimulus_duration": stimulus_duration,
+        "initial_nogo_probability": nogo_probability
+    }
