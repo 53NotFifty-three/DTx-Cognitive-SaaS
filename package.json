@@ -1,0 +1,14 @@
+{
+  "name": "dtx-cognitive-training-monorepo",
+  "version": "1.0.0",
+  "description": "Closed-loop DTx SaaS Platform",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "cd dtx-backend && source venv/bin/activate && uvicorn main:app --reload --port 8000",
+    "start:frontend": "cd dtx-frontend && npm run dev",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" --names \"AWS-BACKEND,VITE-FRONTEND\" --colors \"bgBlue.bold,bgGreen.bold\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
