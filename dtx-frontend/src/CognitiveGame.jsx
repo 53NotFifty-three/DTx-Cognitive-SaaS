@@ -2,11 +2,138 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const TRIALS_PER_GAME = 20;
 
-function CognitiveGame({ onGameComplete }) {
+const translations = {
+  zh: {
+    testIdentity: "测试身份:",
+    defaultLabel: " (默认)",
+    title: "分布式认知神经反馈自适应评估系统",
+    subtitle: "临床测试模式 | 严格数据准入校验",
+    syncPrescription: "同步临床处方并进入序列测试",
+    syncing: "正在同步云端基线处方并调配参数...",
+    confirmStart: "确认已知悉规则，开始测试",
+    invalidSession: "当前评估局已判定为无效",
+    errorLimitText: (limit) => `系统检测到您的异常放空（漏点）或逻辑错误累计已超过 ${limit} 次容错上限。数据已本地销毁。`,
+    returnHome: "返回系统主页重试",
+    progress: "评估进程: ",
+    samples: "样本数: ",
+    errorRemaining: "违规操作容错余量: ",
+    times: " 次",
+    completeTitle: "全套评估序列顺利完成",
+    completeDesc: "患者数据已成功保存至 AWS 集群。",
+    goBack: "返回首页",
+    classicTitle: "第一阶段：基础持续响应模式评估",
+    classicGo: "GO (蓝色)：快速响应（点击屏幕任意区域）。",
+    classicWait: "WAIT (红色)：抑制行为（不要触碰屏幕）。",
+    incongruentTitle: "第二阶段：逆向思维执行功能评估",
+    incongruentLabels: "左侧：🐒 Monkey | 右侧：🐘 Elephant",
+    incongruentRule: "规则：请点击中央文字相反的响应区域。",
+    shapeTitle: "第三阶段：高频数量辨识抑制评估",
+    shapeGo: "1 个蓝色圆形：快速响应（点击屏幕任意区域）。",
+    shapeWait: "2 个蓝色圆形：抑制行为（不要触碰屏幕）。",
+    waitPlus: "+",
+    go: "GO",
+    wait: "WAIT"
+  },
+  en: {
+    testIdentity: "Test Identity:",
+    defaultLabel: " (Default)",
+    title: "Distributed Cognitive Neurofeedback Adaptive Assessment System",
+    subtitle: "Clinical Testing Mode | Strict Data Access Validation",
+    syncPrescription: "Sync Clinical Prescription & Start Testing",
+    syncing: "Synchronizing cloud baseline prescription and adjusting parameters...",
+    confirmStart: "I understand the rules, start test",
+    invalidSession: "Current Session Evaluated as Invalid",
+    errorLimitText: (limit) => `System detected that your abnormal omissions (missed trials) or logical errors have exceeded the threshold of ${limit} errors. Data has been destroyed locally.`,
+    returnHome: "Return to main page and retry",
+    progress: "Progress: ",
+    samples: "Trials: ",
+    errorRemaining: "Error tolerance remaining: ",
+    times: " times",
+    completeTitle: "Assessment Sequence Completed Successfully",
+    completeDesc: "Patient data has been successfully saved to AWS cluster.",
+    goBack: "Return to Main Page",
+    classicTitle: "Phase 1: Sustained Attention Response Assessment",
+    classicGo: "GO (Blue): React quickly (click anywhere on the screen).",
+    classicWait: "WAIT (Red): Inhibit behavior (do NOT touch the screen).",
+    incongruentTitle: "Phase 2: Cognitive Flexibility & Executive Control Assessment",
+    incongruentLabels: "Left: 🐒 Monkey | Right: 🐘 Elephant",
+    incongruentRule: "Rule: Please click the response area OPPOSITE to the center text.",
+    shapeTitle: "Phase 3: Subitizing & Response Inhibition Assessment",
+    shapeGo: "1 Blue Circle: React quickly (click anywhere on the screen).",
+    shapeWait: "2 Blue Circles: Inhibit behavior (do NOT touch the screen).",
+    waitPlus: "+",
+    go: "GO",
+    wait: "WAIT"
+  },
+  ta: {
+    testIdentity: "சோதனை அடையாளம்:",
+    defaultLabel: " (இயல்புநிலை)",
+    title: "பரவலாக்கப்பட்ட அறிவாற்றல் நியூரோஃபீட்பேக் தகவமைப்பு மதிப்பீட்டு முறைமை",
+    subtitle: "மருத்துவ சோதனை முறை | கடுமையான தரவு அணுகல் சரிபார்ப்பு",
+    syncPrescription: "மருத்துவ பரிந்துரையை ஒத்திசைத்து சோதனையைத் தொடங்கு",
+    syncing: "கிளவுட் அடிப்படை பரிந்துரையை ஒத்திசைக்கிறது மற்றும் அளவுருக்களை சரிசெய்கிறது...",
+    confirmStart: "விதிமுறைகளைப் புரிந்துகொண்டேன், சோதனையைத் தொடங்கு",
+    invalidSession: "தற்போதைய அமர்வு செல்லாதது என மதிப்பிடப்பட்டது",
+    errorLimitText: (limit) => `உங்கள் அசாதாரண விடுபடல்கள் அல்லது தர்க்கரீதியான பிழைகள் ${limit} பிழைகள் என்ற வரம்பை மீறியுள்ளதை கணினி கண்டறிந்துள்ளது. தரவு உள்நாட்டில் அழிக்கப்பட்டது.`,
+    returnHome: "முதன்மைப் பக்கத்திற்குத் திரும்பி மீண்டும் முயற்சிக்கவும்",
+    progress: "மதிப்பீட்டு செயல்முறை: ",
+    samples: "சோதனைகள்: ",
+    errorRemaining: "பிழை சகிப்புத்தன்மை மீதமுள்ளது: ",
+    times: " முறை",
+    completeTitle: "மதிப்பீட்டு வரிசை வெற்றிகரமாக முடிந்தது",
+    completeDesc: "நோயாளி தரவு வெற்றிகரமாக AWS கிளஸ்டரில் சேமிக்கப்பட்டது.",
+    goBack: "முதன்மை பக்கத்திற்கு திரும்பு",
+    classicTitle: "கட்டம் 1: நிலையான கவன பதில் மதிப்பீடு",
+    classicGo: "GO (நீலம்): விரைவாக பதிலளிக்கவும் (திரையின் எங்கும் கிளிக் செய்யவும்).",
+    classicWait: "WAIT (சிகப்பு): செயலைத் தடுக்கவும் (திரையைத் தொட வேண்டாம்).",
+    incongruentTitle: "கட்டம் 2: அறிவாற்றல் நெகிழ்வுத்தன்மை மற்றும் நிர்வாக கட்டுப்பாட்டு மதிப்பீடு",
+    incongruentLabels: "இடது: 🐒 Monkey | வலது: 🐘 Elephant",
+    incongruentRule: "விதி: மைய உரைக்கு எதிரான பதில் பகுதியில் கிளிக் செய்யவும்.",
+    shapeTitle: "கட்டம் 3: அளவு கண்டறிதல் மற்றும் பதில் தடுப்பு மதிப்பீடு",
+    shapeGo: "1 நீல வட்டம்: விரைவாக பதிலளிக்கவும் (திரையின் எங்கும் கிளிக் செய்யவும்).",
+    shapeWait: "2 நீல வட்டங்கள்: செயலைத் தடுக்கவும் (திரையைத் தொட வேண்டாம்).",
+    waitPlus: "+",
+    go: "GO",
+    wait: "WAIT"
+  },
+  ms: {
+    testIdentity: "Identiti Ujian:",
+    defaultLabel: " (Lalai)",
+    title: "Sistem Penilaian Penyesuaian Maklum Balas Neuro Kognitif Teragih",
+    subtitle: "Mod Ujian Klinikal | Pengesahan Kemasukan Data Ketat",
+    syncPrescription: "Senkronisasi Preskripsi Klinikal & Mula Ujian",
+    syncing: "Menyegerakkan preskripsi garis asas awan dan melaraskan parameter...",
+    confirmStart: "Saya memahami peraturan, mulakan ujian",
+    invalidSession: "Sesi Semasa Dinilai sebagai Tidak Sah",
+    errorLimitText: (limit) => `Sistem mengesan bahawa kelalaian luar biasa anda (percubaan terlepas) atau ralat logik telah melebihi had bertoleransi sebanyak ${limit} kali. Data telah dimusnahkan secara tempatan.`,
+    returnHome: "Kembali ke halaman utama dan cuba lagi",
+    progress: "Proses Penilaian: ",
+    samples: "Sampel: ",
+    errorRemaining: "Had toleransi ralat: ",
+    times: " kali",
+    completeTitle: "Selesai Keseluruhan Jujukan Penilaian",
+    completeDesc: "Data pesakit telah berjaya disimpan ke kluster AWS.",
+    goBack: "Kembali ke Halaman Utama",
+    classicTitle: "Fasa 1: Penilaian Respon Perhatian Berterusan",
+    classicGo: "GO (Biru): Balas dengan cepat (klik mana-mana kawasan pada skrin).",
+    classicWait: "WAIT (Merah): Hentikan tindakan (jangan sentuh skrin).",
+    incongruentTitle: "Fasa 2: Penilaian Fungsi Eksekutif Pemikiran Songsang",
+    incongruentLabels: "Kiri: 🐒 Monkey | Kanan: 🐘 Elephant",
+    incongruentRule: "Peraturan: Sila klik kawasan tindak balas bertentangan dengan teks tengah.",
+    shapeTitle: "Fasa 3: Penilaian Pengendalian Jumlah Kekerapan Tinggi",
+    shapeGo: "1 Bulatan Biru: Balas dengan cepat (klik mana-mana kawasan pada skrin).",
+    shapeWait: "2 Bulatan Biru: Hentikan tindakan (jangan sentuh skrin).",
+    waitPlus: "+",
+    go: "GO",
+    wait: "WAIT"
+  }
+};
+
+function CognitiveGame({ onGameComplete, lang = 'zh' }) {
   const [gameState, setGameState] = useState('IDLE'); 
   const [severityInfo, setSeverityInfo] = useState('Loading...');
   
-  // ⭐ 核心修改：动态患者绑定体系，取代曾经写死的 patientId 属性
+  // 核心修改：动态患者绑定体系，取代曾经写死的 patientId 属性
   const [patientsList, setPatientsList] = useState([]);
   const [activePatientId, setActivePatientId] = useState("patient_001");
 
@@ -21,13 +148,18 @@ function CognitiveGame({ onGameComplete }) {
 
   const aiStimulusDuration = useRef(2000); 
   const aiNogoProbability = useRef(0.3);   
+  const trialIntervalRange = useRef([1500, 4500]); // 出现间隔 [min, max]
+  const maxErrors = useRef(5);                     // 熔断最大错误次数上限
 
   const currentTrialRef = useRef(0);
   const trialStartTime = useRef(0);
   const hasActionTaken = useRef(false);
   const allTrialLogs = useRef([]);
   const timerRef = useRef(null);
+  const transitionTimerRef = useRef(null); // 追踪300ms过渡定时器，防卸载后内存泄漏
   const invalidCountRef = useRef(0);
+
+  const text = translations[lang] || translations.zh;
 
   // 挂载时加载动态患者名录
   useEffect(() => {
@@ -45,19 +177,26 @@ function CognitiveGame({ onGameComplete }) {
   useEffect(() => {
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
+      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
     };
   }, []);
 
   const fetchAIConfigAndStart = () => {
     setGameState('LOADING_CONFIG');
+    // 安全起见，在开始同步前强制销毁所有可能残存的定时器
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
+    
     fetch(`http://localhost:8000/api/patients/${activePatientId}/ai-config`)
       .then(res => res.json())
       .then(config => {
         setSeverityInfo(config.severity);
         setGameSequence(config.game_sequence);
         
-        aiStimulusDuration.current = 2000; 
+        aiStimulusDuration.current = config.initial_stimulus_duration; // 判断容错时间由后端自适应控制
         aiNogoProbability.current = config.initial_nogo_probability;
+        trialIntervalRange.current = config.trial_interval_range || [1500, 4500]; // 出现间隔由后端配置决定
+        maxErrors.current = config.max_errors || 5; // 判定容错次数由后端决定
         
         setCurrentModuleIndex(0);
         allTrialLogs.current = [];
@@ -85,7 +224,9 @@ function CognitiveGame({ onGameComplete }) {
     setCurrentPrompt("");
     setCircleCount(0);
     setIsWaiting(true);
-    const randomDelay = 1000 + Math.random() * 4000;
+    // 使用后端自适应下发的出现间隔范围计算延迟
+    const [minDelay, maxDelay] = trialIntervalRange.current;
+    const randomDelay = minDelay + Math.random() * (maxDelay - minDelay);
     timerRef.current = setTimeout(() => {
       setIsWaiting(false);
       startSingleTrial(mode);
@@ -102,9 +243,18 @@ function CognitiveGame({ onGameComplete }) {
       setupTimeoutTimer(nextColor, mode);
     } 
     else if (mode === 'INCONGRUENT') {
-      const prompt = Math.random() < 0.5 ? '🐒 Monkey' : '🐘 Elephant';
-      setCurrentPrompt(prompt);
-      setupTimeoutTimer(prompt, mode);
+      let promptLabel = '';
+      if (lang === 'zh') {
+        promptLabel = Math.random() < 0.5 ? '🐒 猴子 (Monkey)' : '🐘 大象 (Elephant)';
+      } else if (lang === 'ta') {
+        promptLabel = Math.random() < 0.5 ? '🐒 குரங்கு (Monkey)' : '🐘 யானை (Elephant)';
+      } else if (lang === 'ms') {
+        promptLabel = Math.random() < 0.5 ? '🐒 Monyet (Monkey)' : '🐘 Gajah (Elephant)';
+      } else {
+        promptLabel = Math.random() < 0.5 ? '🐒 Monkey' : '🐘 Elephant';
+      }
+      setCurrentPrompt(promptLabel);
+      setupTimeoutTimer(promptLabel, mode);
     }
     else if (mode === 'SHAPE_COUNT') {
       const count = Math.random() < (1 - aiNogoProbability.current) ? 1 : 2;
@@ -131,7 +281,7 @@ function CognitiveGame({ onGameComplete }) {
           invalidCountRef.current += 1;
         }
 
-        if (invalidCountRef.current > 5) {
+        if (invalidCountRef.current >= maxErrors.current) {
           terminateOnFailure();
         } else {
           moveToNext(mode);
@@ -172,7 +322,7 @@ function CognitiveGame({ onGameComplete }) {
       invalidCountRef.current += 1;
     }
 
-    if (invalidCountRef.current > 5) {
+    if (invalidCountRef.current >= maxErrors.current) {
       terminateOnFailure();
     } else {
       moveToNext(currentMode);
@@ -188,14 +338,20 @@ function CognitiveGame({ onGameComplete }) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    setTimeout(() => {
+    if (transitionTimerRef.current) {
+      clearTimeout(transitionTimerRef.current);
+      transitionTimerRef.current = null;
+    }
+    transitionTimerRef.current = setTimeout(() => {
       currentTrialRef.current += 1;
       setTrialCount(currentTrialRef.current);
       if (currentTrialRef.current > TRIALS_PER_GAME) {
         handleModuleComplete();
         return;
       }
-      const randomDelay = 1000 + Math.random() * 4000;
+      // 使用后端自适应下发的出现间隔范围计算延迟
+      const [minDelay, maxDelay] = trialIntervalRange.current;
+      const randomDelay = minDelay + Math.random() * (maxDelay - minDelay);
       timerRef.current = setTimeout(() => {
         setIsWaiting(false); 
         startSingleTrial(mode); 
@@ -205,7 +361,7 @@ function CognitiveGame({ onGameComplete }) {
 
   const logTrialData = (mode, type, reactionTime, isCorrect) => {
     const log = {
-      patient_id: activePatientId, // ⭐ 自动注入当前选中的动态 ID
+      patient_id: activePatientId, 
       timestamp: new Date().toISOString(),
       target_type: `${mode}_${type}`,
       reaction_time_ms: reactionTime,
@@ -215,7 +371,14 @@ function CognitiveGame({ onGameComplete }) {
   };
 
   const terminateOnFailure = () => {
-    if (timerRef.current) clearTimeout(timerRef.current);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    if (transitionTimerRef.current) {
+      clearTimeout(transitionTimerRef.current);
+      transitionTimerRef.current = null;
+    }
     setGameState('FAILED');
   };
 
@@ -231,13 +394,19 @@ function CognitiveGame({ onGameComplete }) {
 
   const endWholeSet = () => {
     setGameState('FINISHED');
-    allTrialLogs.current.forEach(log => {
-      fetch('http://localhost:8000/api/log', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(log)
-      }).catch(err => console.error("数据同步失败:", err));
-    });
+    // 使用新增的批量上传接口，避免对 AWS 数据库集群引发高并发连接池消耗
+    fetch('http://localhost:8000/api/logs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(allTrialLogs.current)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error("Bulk log sync failed");
+        return res.json();
+      })
+      .then(data => console.log("✅ 批量数据上传成功:", data.message))
+      .catch(err => console.error("数据同步失败:", err));
+      
     if (onGameComplete) onGameComplete(allTrialLogs.current);
   };
 
@@ -258,35 +427,35 @@ function CognitiveGame({ onGameComplete }) {
     
     if (currentMode === 'CLASSIC') {
       return (
-        <div style={introStyle}>
-          <h3 style={commonTitle}>第一阶段：基础持续响应模式评估</h3>
-          <ul style={{ textAlign: 'left', display: 'inline-block', color: '#475569', lineHeight: '1.8', margin: '0 0 25px 0' }}>
-            <li>GO (蓝色)：快速响应（点击屏幕任意区域）。</li>
-            <li>WAIT (红色)：抑制行为（不要触碰屏幕）。</li>
-          </ul>
-        </div>
+         <div style={introStyle}>
+           <h3 style={commonTitle}>{text.classicTitle}</h3>
+           <ul style={{ textAlign: 'left', display: 'inline-block', color: '#475569', lineHeight: '1.8', margin: '0 0 25px 0' }}>
+             <li>{text.classicGo}</li>
+             <li>{text.classicWait}</li>
+           </ul>
+         </div>
       );
     } 
     else if (currentMode === 'INCONGRUENT') {
       return (
-        <div style={introStyle}>
-          <h3 style={commonTitle}>第二阶段：逆向思维执行功能评估</h3>
-          <ul style={{ textAlign: 'left', display: 'inline-block', color: '#475569', lineHeight: '1.8', margin: '0 0 25px 0' }}>
-            <li>左侧：<strong>🐒 Monkey</strong> | 右侧：<strong>🐘 Elephant</strong>。</li>
-            <li><strong>规则：</strong>请点击中央文字<strong>相反</strong>的响应区域。</li>
-          </ul>
-        </div>
+         <div style={introStyle}>
+           <h3 style={commonTitle}>{text.incongruentTitle}</h3>
+           <ul style={{ textAlign: 'left', display: 'inline-block', color: '#475569', lineHeight: '1.8', margin: '0 0 25px 0' }}>
+             <li><strong>{text.incongruentLabels}</strong></li>
+             <li><strong>{text.incongruentRule}</strong></li>
+           </ul>
+         </div>
       );
     } 
     else if (currentMode === 'SHAPE_COUNT') {
       return (
-        <div style={introStyle}>
-          <h3 style={commonTitle}>第三阶段：高频数量辨识抑制评估</h3>
-          <ul style={{ textAlign: 'left', display: 'inline-block', color: '#475569', lineHeight: '1.8', margin: '0 0 25px 0' }}>
-            <li>1 个蓝色圆形：快速响应（点击屏幕任意区域）。</li>
-            <li>2 个蓝色圆形：抑制行为（不要触碰屏幕）。</li>
-          </ul>
-        </div>
+         <div style={introStyle}>
+           <h3 style={commonTitle}>{text.shapeTitle}</h3>
+           <ul style={{ textAlign: 'left', display: 'inline-block', color: '#475569', lineHeight: '1.8', margin: '0 0 25px 0' }}>
+             <li>{text.shapeGo}</li>
+             <li>{text.shapeWait}</li>
+           </ul>
+         </div>
       );
     }
     return null;
@@ -295,13 +464,13 @@ function CognitiveGame({ onGameComplete }) {
   return (
     <div style={{ position: 'relative', fontFamily: 'sans-serif', minHeight: '420px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       
-      {/* 🏡 A. 启动页：增设右上角动态身份下拉切换阀 */}
+      {/* 🏡 A. 启动页 */}
       {gameState === 'IDLE' && (
         <div style={{ textAlign: 'center', padding: '40px' }}>
           
-          {/* ⭐ 完美嵌入：右上角绝对定位的轻量化选人组件 */}
+          {/* 轻量化选人组件 */}
           <div style={{ position: 'absolute', top: 0, right: 0, background: '#fff', padding: '4px 10px', borderRadius: '6px', border: '1px solid #e2e8f0', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-            <span style={{ color: '#64748b', fontWeight: 'bold' }}>测试身份:</span>
+            <span style={{ color: '#64748b', fontWeight: 'bold' }}>{text.testIdentity}</span>
             <select 
               value={activePatientId}
               onChange={(e) => setActivePatientId(e.target.value)}
@@ -310,21 +479,21 @@ function CognitiveGame({ onGameComplete }) {
               {patientsList.map(id => (
                 <option key={id} value={id}>{id}</option>
               ))}
-              {patientsList.length === 0 && <option value="patient_001">patient_001 (默认)</option>}
+              {patientsList.length === 0 && <option value="patient_001">patient_001{text.defaultLabel}</option>}
             </select>
           </div>
 
-          <h2 style={{ color: '#1e293b', marginBottom: '10px' }}>分布式认知神经反馈自适应评估系统</h2>
-          <p style={{ color: '#64748b', marginBottom: '30px' }}>临床测试模式 | 严格数据准入校验</p>
+          <h2 style={{ color: '#1e293b', marginBottom: '10px' }}>{text.title}</h2>
+          <p style={{ color: '#64748b', marginBottom: '30px' }}>{text.subtitle}</p>
           <button onClick={fetchAIConfigAndStart} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px 28px', borderRadius: '8px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
-            同步临床处方并进入序列测试
+            {text.syncPrescription}
           </button>
         </div>
       )}
 
       {/* 🔄 B. 加载页 */}
       {gameState === 'LOADING_CONFIG' && (
-        <div style={{ textAlign: 'center' }}><h3 style={{ color: '#64748b' }}>正在同步云端基线处方并调配参数...</h3></div>
+        <div style={{ textAlign: 'center' }}><h3 style={{ color: '#64748b' }}>{text.syncing}</h3></div>
       )}
 
       {/* 📋 C. 引导页 */}
@@ -332,7 +501,7 @@ function CognitiveGame({ onGameComplete }) {
         <div style={{ textAlign: 'center', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
           {renderModuleIntroduction()}
           <button onClick={handleStartCurrentModule} style={{ background: '#1e293b', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '8px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', marginTop: '15px' }}>
-            确认已知悉规则，开始测试
+            {text.confirmStart}
           </button>
         </div>
       )}
@@ -340,12 +509,12 @@ function CognitiveGame({ onGameComplete }) {
       {/* 📋 D. 熔断页 */}
       {gameState === 'FAILED' && (
         <div style={{ textAlign: 'center', background: '#fef2f2', padding: '40px', borderRadius: '16px', border: '2px solid #ef4444', margin: '0 20px' }}>
-          <h2 style={{ color: '#991b1b', marginBottom: '10px' }}>当前评估局已判定为无效</h2>
+          <h2 style={{ color: '#991b1b', marginBottom: '10px' }}>{text.invalidSession}</h2>
           <p style={{ color: '#b91c1c', maxWidth: '600px', margin: '0 auto 25px auto', fontSize: '14px', lineHeight: '1.6' }}>
-            系统检测到您的异常放空（漏点）或逻辑错误累计已超过 5 次容错上限。数据已本地销毁。
+            {text.errorLimitText(maxErrors.current)}
           </p>
           <button onClick={() => setGameState('IDLE')} style={{ padding: '12px 24px', cursor: 'pointer', background: '#fff', border: '2px solid #ef4444', borderRadius: '8px', fontWeight: 'bold', color: '#991b1b' }}>
-            返回系统主页重试
+            {text.returnHome}
           </button>
         </div>
       )}
@@ -360,17 +529,17 @@ function CognitiveGame({ onGameComplete }) {
             {gameSequence[currentModuleIndex] === 'INCONGRUENT' && <span style={{ fontSize: '54px', opacity: isWaiting ? 0.3 : 1 }}>🐘</span>}
           </div>
           <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '160px', height: '160px', borderRadius: '50%', background: (!isWaiting && gameSequence[currentModuleIndex] === 'CLASSIC') ? (currentColor === 'blue' ? '#2563eb' : '#ef4444') : '#ffffff', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.15), 0 0 0 6px rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 10 }}>
-            {isWaiting ? <span style={{ color: '#94a3b8', fontSize: '40px' }}>+</span> : (
+            {isWaiting ? <span style={{ color: '#94a3b8', fontSize: '40px' }}>{text.waitPlus}</span> : (
               <>
-                {gameSequence[currentModuleIndex] === 'CLASSIC' && <span style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '28px' }}>{currentColor === 'blue' ? 'GO' : 'WAIT'}</span>}
+                {gameSequence[currentModuleIndex] === 'CLASSIC' && <span style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '28px' }}>{currentColor === 'blue' ? text.go : text.wait}</span>}
                 {gameSequence[currentModuleIndex] === 'INCONGRUENT' && <span style={{ color: '#0f172a', fontWeight: 'bold', fontSize: '24px' }}>{currentPrompt}</span>}
                 {gameSequence[currentModuleIndex] === 'SHAPE_COUNT' && renderCircles()}
               </>
             )}
           </div>
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', background: 'rgba(15, 23, 42, 0.9)', color: '#fff', padding: '10px 20px', display: 'flex', justifyContent: 'space-between', fontSize: '12px', zIndex: 20, boxSizing: 'border-box' }}>
-            <div>评估进程: <strong>{currentModuleIndex + 1}/3</strong> | 样本数: <strong>{trialCount}/20</strong></div>
-            <div>违规操作容错余量: <strong style={{color:'#ef4444'}}>{6 - invalidCountRef.current} 次</strong></div>
+            <div>{text.progress}<strong>{currentModuleIndex + 1}/3</strong> | {text.samples}<strong>{trialCount}/20</strong></div>
+            <div>{text.errorRemaining}<strong style={{color:'#ef4444'}}>{maxErrors.current - invalidCountRef.current}{text.times}</strong></div>
           </div>
         </div>
       )}
@@ -378,9 +547,9 @@ function CognitiveGame({ onGameComplete }) {
       {/* 🏁 F. 顺利通关页 */}
       {gameState === 'FINISHED' && (
         <div style={{ textAlign: 'center', background: '#ecfdf5', padding: '40px', borderRadius: '16px', border: '2px solid #10b981', margin: '0 20px' }}>
-          <h2 style={{ color: '#065f46', marginBottom: '10px' }}>全套评估序列顺利完成</h2>
-          <p style={{ color: '#047857', fontSize: '14px', lineHeight: '1.6' }}>患者数据已成功保存至 AWS 集群。</p>
-          <button onClick={() => setGameState('IDLE')} style={{ padding: '12px 24px', cursor: 'pointer', background: '#fff', border: '2px solid #10b981', borderRadius: '8px', fontWeight: 'bold', color: '#065f46' }}>返回首页</button>
+          <h2 style={{ color: '#065f46', marginBottom: '10px' }}>{text.completeTitle}</h2>
+          <p style={{ color: '#047857', fontSize: '14px', lineHeight: '1.6' }}>{text.completeDesc}</p>
+          <button onClick={() => setGameState('IDLE')} style={{ padding: '12px 24px', cursor: 'pointer', background: '#fff', border: '2px solid #10b981', borderRadius: '8px', fontWeight: 'bold', color: '#065f46' }}>{text.goBack}</button>
         </div>
       )}
     </div>
