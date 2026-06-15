@@ -92,7 +92,25 @@ const translations = {
     
     statusSignificant: "成果显著",
     statusModerate: "效果温和",
-    statusFluctuating: "处于波动调整期"
+    statusFluctuating: "处于波动调整期",
+    
+    // AI Report Localizations
+    reportTitle: "🧠 AI 临床会诊综合报告",
+    reportCopilot: "智能临床助手",
+    reportSelectPatientTip: "请在右上方选择一个临床患者以生成综合分析报告。",
+    reportGenerating: "正在运行神经元分析模型以生成会诊报告...",
+    reportNoData: "该患者目前没有任何可供分析的临床数据轨迹。请先让患者完成一些训练模块。",
+    reportSectionSummary: "📋 认知表现综合评估",
+    reportSectionRecommendation: "🎯 优先推荐训练模态",
+    reportSectionReasoning: "🔬 临床推荐依据与病理分析",
+    reportSectionDomains: "🧠 认知本能域干预靶点 (Domain Focus)",
+    reportSectionExercises: "💊 数字疗法干预处方 (Prescribed Exercises)",
+    reportSectionLifestyle: "🥗 临床生活习惯协同方案 (Lifestyle Protocols)",
+    reportSectionOutlook: "🔮 预后与康复展望 (Prognosis Outlook)",
+    reportDomainInhibition: "行为抑制系统 (Behavioral Inhibition - Classic)",
+    reportDomainFlexibility: "认知灵活性 (Cognitive Flexibility - Incongruent)",
+    reportDomainProcessing: "信息处理速度与精细控制 (Processing Speed - Shape Count)",
+    reportStatsHeader: "📊 各模块数据摘要"
   },
   en: {
     dashboardTitle: "📊 Clinician Dashboard: Cognitive Data Filtration Console",
@@ -184,7 +202,25 @@ const translations = {
     
     statusSignificant: "significant outcomes",
     statusModerate: "moderate effects",
-    statusFluctuating: "a fluctuating adjustment phase"
+    statusFluctuating: "a fluctuating adjustment phase",
+    
+    // AI Report Localizations
+    reportTitle: "🧠 AI Clinical Consultation Report",
+    reportCopilot: "Medical Copilot",
+    reportSelectPatientTip: "Please select a patient in the top right to generate a comprehensive analysis report.",
+    reportGenerating: "Running neural analysis model to generate comprehensive report...",
+    reportNoData: "This patient has no clinical data trajectories available for analysis. Please have the patient complete some training modules first.",
+    reportSectionSummary: "📋 Comprehensive Cognitive Performance Assessment",
+    reportSectionRecommendation: "🎯 Recommended Priority Training",
+    reportSectionReasoning: "🔬 Clinical Recommendation & Rationale",
+    reportSectionDomains: "🧠 Targeted Cognitive Domains (Domain Focus)",
+    reportSectionExercises: "💊 Prescribed Digital Therapeutics (Prescribed Exercises)",
+    reportSectionLifestyle: "🥗 Synergistic Lifestyle Protocols",
+    reportSectionOutlook: "🔮 Prognosis & Recovery Outlook",
+    reportDomainInhibition: "Behavioral Inhibition System (Classic)",
+    reportDomainFlexibility: "Cognitive Flexibility (Incongruent)",
+    reportDomainProcessing: "Processing Speed & Fine Control (Shape Count)",
+    reportStatsHeader: "📊 Mode-Specific Performance Summary"
   },
   ta: {
     dashboardTitle: "📊 மருத்துவர் மேலாண்மை பின்நிலை: அறிவாற்றல் தரவு வடிகட்டுதல் பணியகம்",
@@ -276,7 +312,25 @@ const translations = {
     
     statusSignificant: "குறிப்பிடத்தக்க முடிவுகள்",
     statusModerate: "மிதமான விளைவுகள்",
-    statusFluctuating: "மாற்றங்களுக்கு உட்பட்ட கட்டம்"
+    statusFluctuating: "மாற்றங்களுக்கு உட்பட்ட கட்டம்",
+    
+    // AI Report Localizations
+    reportTitle: "🧠 செயற்கை நுண்ணறிவு மருத்துவ ஆலோசனை அறிக்கை",
+    reportCopilot: "Medical Copilot",
+    reportSelectPatientTip: "விரிவான பகுப்பாய்வு அறிக்கையை உருவாக்க மேல் வலதுபுறத்தில் நோயாளியைத் தேர்ந்தெடுக்கவும்.",
+    reportGenerating: "விரிவான அறிக்கையை உருவாக்க நரம்பியல் பகுப்பாய்வு மாதிரியை இயக்குகிறது...",
+    reportNoData: "இந்த நோயாளிக்கு பகுப்பாய்வு செய்ய எந்த மருத்துவ தரவு தடங்களும் இல்லை. தயவுசெய்து முதலில் நோயாளியை சில பயிற்சி தொகுதிகளை முடிக்கச் செய்யவும்.",
+    reportSectionSummary: "📋 அறிவாற்றல் செயல்திறன் விரிவான மதிப்பீடு",
+    reportSectionRecommendation: "🎯 பரிந்துரைக்கப்படும் முன்னுரிமை பயிற்சி",
+    reportSectionReasoning: "🔬 மருத்துவ பரிந்துரை மற்றும் பகுத்தறிவு",
+    reportSectionDomains: "🧠 இலக்கு அறிவாற்றல் களங்கள் (Domain Focus)",
+    reportSectionExercises: "💊 பரிந்துரைக்கப்படும் டிஜிட்டல் சிகிச்சை முறைகள்",
+    reportSectionLifestyle: "🥗 வாழ்க்கை முறை வழிகாட்டுதல்கள்",
+    reportSectionOutlook: "🔮 முன்கணிப்பு மற்றும் மீட்பு அவுட்லுக்",
+    reportDomainInhibition: "நடத்தை தடுப்பு அமைப்பு (Classic)",
+    reportDomainFlexibility: "அறிவாற்றல் நெகிழ்வுத்தன்மை (Incongruent)",
+    reportDomainProcessing: "செயலாக்க வேகம் மற்றும் கட்டுப்பாடு (Shape Count)",
+    reportStatsHeader: "📊 ஒவ்வொரு தொகுதியின் செயல்திறன் சுருக்கம்"
   },
   ms: {
     dashboardTitle: "📊 Portal Pengurusan Doktor: Konsol Penapisan Data Kognitif Ketulenan Tinggi",
@@ -368,7 +422,25 @@ const translations = {
     
     statusSignificant: "hasil yang ketara",
     statusModerate: "kesan sederhana",
-    statusFluctuating: "fasa pelarasan turun naik"
+    statusFluctuating: "fasa pelarasan turun naik",
+    
+    // AI Report Localizations
+    reportTitle: "🧠 Laporan Perundingan Klinikal AI",
+    reportCopilot: "Copilot Perubatan",
+    reportSelectPatientTip: "Sila pilih pesakit di bahagian atas kanan untuk menghasilkan laporan analisis komprehensif.",
+    reportGenerating: "Menjalankan model analisis saraf untuk menghasilkan laporan komprehensif...",
+    reportNoData: "Pesakit ini tidak mempunyai trajektori data klinikal yang tersedia untuk analisis. Sila minta pesakit melengkapkan beberapa sesi latihan terlebih dahulu.",
+    reportSectionSummary: "📋 Penilaian Prestasi Kognitif Komprehensif",
+    reportSectionRecommendation: "🎯 Cadangan Latihan Keutamaan",
+    reportSectionReasoning: "🔬 Rationale & Rekomendasi Klinikal",
+    reportSectionDomains: "🧠 Domain Kognitif Sasaran (Fokus Domain)",
+    reportSectionExercises: "💊 Terapi Digital Preskripsi (Latihan Ditetapkan)",
+    reportSectionLifestyle: "🥗 Protokol Gaya Hidup Sinergi",
+    reportSectionOutlook: "🔮 Prospek Prognosis & Pemulihan",
+    reportDomainInhibition: "Sistem Perencatan Tingkah Laku (Classic)",
+    reportDomainFlexibility: "Fleksibiliti Kognitif (Incongruent)",
+    reportDomainProcessing: "Kelajuan Pemprosesan & Kawalan Halus (Shape Count)",
+    reportStatsHeader: "📊 Ringkasan Prestasi Mengikut Mod"
   }
 };
 
@@ -393,6 +465,11 @@ function DoctorDashboard({ lang = 'zh' }) {
   const [chartData, setChartData] = useState([]);
   const [metrics, setMetrics] = useState({ avgTime: 0, accuracy: 0, totalTrials: 0, rtTrend: 0, accTrend: 0, hasTrend: false });
   const [loading, setLoading] = useState(true);
+
+  // AI report states
+  const [aiReport, setAiReport] = useState(null);
+  const [loadingAI, setLoadingAI] = useState(false);
+  const [aiError, setAiError] = useState(null);
 
   const t = translations[lang] || translations.zh;
 
@@ -494,6 +571,45 @@ function DoctorDashboard({ lang = 'zh' }) {
     };
   }, [currentPatientId]);
 
+  // Fetch AI Report whenever the active patient or patient logs change
+  useEffect(() => {
+    let active = true;
+    if (!currentPatientId) {
+      setAiReport(null);
+      setAiError(null);
+      return;
+    }
+    setLoadingAI(true);
+    setAiError(null);
+    fetch('http://localhost:8000/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ patient_id: currentPatientId })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to load AI report");
+        return res.json();
+      })
+      .then(report => {
+        if (active) {
+          setAiReport(report);
+          setLoadingAI(false);
+        }
+      })
+      .catch(err => {
+        console.error("无法加载AI综合诊断报告:", err);
+        if (active) {
+          setAiReport(null);
+          setAiError(err.message);
+          setLoadingAI(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [currentPatientId, rawDbData]);
+
   // 3. 临床数据隔离与滑动聚合算法
   useEffect(() => {
     if (rawDbData.length === 0) {
@@ -529,12 +645,15 @@ function DoctorDashboard({ lang = 'zh' }) {
 
       const accuracyRate = Math.round((correctTrials.length / currentWindow.length) * 100);
       const stageIndex = Math.floor(i / windowSize) + 1;
+      const lastTrial = currentWindow[currentWindow.length - 1];
+      const completedTime = lastTrial ? new Date(lastTrial.timestamp).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US') : "";
 
       groupedChartData.push({
         name: t.chartSeqLabel(stageIndex),
         avgReactionTime: avgReactionTime,
         accuracy: accuracyRate,
-        sampleCount: currentWindow.length
+        sampleCount: currentWindow.length,
+        completedTime: completedTime
       });
     }
 
@@ -635,55 +754,325 @@ function DoctorDashboard({ lang = 'zh' }) {
       .catch(err => console.error(t.alertDeleteFailed, err));
   };
 
-  const renderAIInsight = () => {
-    // 基础神经学表现分析
-    let neuroAnalysis = "";
-    let prescription = "";
+  // Localization mappings for backend keys
+  const getLocalizedBestTraining = (bestTraining) => {
+    const mapping = {
+      "Color Go/No-Go (Sustained Attention)": {
+        zh: "基础颜色持续反应训练 (Sustained Attention)",
+        en: "Color Go/No-Go (Sustained Attention)",
+        ta: "வண்ண பதில் சோதனை (Sustained Attention)",
+        ms: "Mod Warna Asas (Sustained Attention)"
+      },
+      "Cognitive Flexibility (Reverse Conflict)": {
+        zh: "逆向冲突灵活性训练 (Cognitive Flexibility)",
+        en: "Cognitive Flexibility (Reverse Conflict)",
+        ta: "தலைகீழ் சிந்தனை சோதனை (Cognitive Flexibility)",
+        ms: "Mod Minda Songsang (Cognitive Flexibility)"
+      },
+      "Quantity Subitizing (Response Inhibition)": {
+        zh: "数量辨识与行为抑制训练 (Response Inhibition)",
+        en: "Quantity Subitizing (Response Inhibition)",
+        ta: "அளவு கண்டறிதல் சோதனை (Response Inhibition)",
+        ms: "Mod Cari Kuantiti (Response Inhibition)"
+      }
+    };
+    return mapping[bestTraining]?.[lang] || bestTraining;
+  };
 
-    if (viewMode === 'CLASSIC') {
-      neuroAnalysis = metrics.accuracy > 85 ? t.insightNeuroClassicGood : t.insightNeuroClassicBad;
-      prescription = t.insightPresClassic;
+  const getLocalizedReasoning = (bestTraining, stats) => {
+    const c = stats?.classic || { total: 0, acc: 0, rt: 0 };
+    const i = stats?.incongruent || { total: 0, acc: 0, rt: 0 };
+    const s = stats?.shape || { total: 0, acc: 0, rt: 0 };
+    
+    if (bestTraining?.includes("Color Go/No-Go")) {
+      return {
+        zh: `患者在基础颜色持续反应测试中表现出最低的正确率（${c.acc.toFixed(1)}%），这表明其在维持警觉和焦点稳定性方面存在基本障碍。建议优先进行本项训练，以稳固前额叶执行功能的基础控制基线。`,
+        en: `The patient demonstrates their lowest accuracy (${c.acc.toFixed(1)}%) in basic Sustained Attention (Color Go/No-Go), indicating a fundamental difficulty in maintaining alert readiness. We recommend starting with this module to stabilize their core executive baseline.`,
+        ta: `அடிப்படை வண்ண பதில் சோதனையில் நோயாளி தனது குறைந்தபட்ச துல்லியத்தை (${c.acc.toFixed(1)}%) காட்டுகிறார், இது விழிப்புணர்வை பராமரிப்பதில் உள்ள அடிப்படை சிரமத்தை குறிக்கிறது. அவரது முக்கிய செயல்பாட்டு திறனை உறுதிப்படுத்த இந்த தொகுதியுடன் தொடங்க பரிந்துரைக்கிறோம்.`,
+        ms: `Pesakit menunjukkan ketepatan terendah (${c.acc.toFixed(1)}%) dalam mod Warna Asas (Sustained Attention), menunjukkan kesukaran asas dalam mengekalkan kesiagaan fokus. Kami mengesyorkan bermula dengan modul ini untuk menstabilkan garis dasar eksekutif teras mereka.`
+      }[lang] || "";
     }
-    else if (viewMode === 'INCONGRUENT') {
-      neuroAnalysis = metrics.accuracy > 80 ? t.insightNeuroIncongruentGood : t.insightNeuroIncongruentBad(metrics.avgTime);
-      prescription = t.insightPresIncongruent;
+    
+    if (bestTraining?.includes("Cognitive Flexibility")) {
+      return {
+        zh: `患者在逆向冲突规则的快速切换下表现出较大的延迟（${i.rt.toFixed(0)} ms）和正确率下降（${i.acc.toFixed(1)}%）。这种在克服肢体与本能映射时的障碍，突显了其高级脑区在执行认知重构和灵活性切换时存在瓶颈。建议加强本项训练以改善认知灵活性。`,
+        en: `The patient shows an accuracy drop (${i.acc.toFixed(1)}%) and processing delay (${i.rt.toFixed(0)} ms) under rule-switching conditions in Incongruent Mode. This bottleneck in overriding instinctual choices suggests a priority for flexibility training.`,
+        ta: `நோயாளி மாற்று சிந்தனை சோதனையில் விதி-மாற்ற சூழ்நிலைகளின் கீழ் துல்லிய வீழ்ச்சியையும் (${i.acc.toFixed(1)}%) மற்றும் செயலாக்க தாமதத்தையும் (${i.rt.toFixed(0)} ms) காட்டுகிறார். உள்ளுணர்வு தேர்வுகளை மீறுவதில் உள்ள இந்த தடை, நெகிழ்வுத்தன்மை பயிற்சிக்கான முன்னுரிமையை பரிந்துரைக்கிறது.`,
+        ms: `Pesakit menunjukkan penurunan ketepatan (${i.acc.toFixed(1)}%) dan kelewatan pemprosesan (${i.rt.toFixed(0)} ms) di bawah keadaan penukaran peraturan dalam Mod Minda Songsang. Halangan dalam mengatasi pilihan impulsif ini mencadangkan keutamaan latihan fleksibili.`
+      }[lang] || "";
     }
-    else if (viewMode === 'SHAPE_COUNT') {
-      neuroAnalysis = metrics.accuracy > 85 ? t.insightNeuroShapeGood : t.insightNeuroShapeBad;
-      prescription = t.insightPresShape;
+    
+    if (bestTraining?.includes("Quantity Subitizing")) {
+      return {
+        zh: `患者在面对同色异量等复杂视觉刺激物时，正确率发生偏低（${s.acc.toFixed(1)}%），往往伴随较高的冲动误触。针对本模块的集中训练能够有效增强突触的负反馈制动能力，改善其精细动作控制和冲动行为抑制能力。`,
+        en: `The patient exhibits their lowest performance accuracy (${s.acc.toFixed(1)}%) in Subitizing & Response Inhibition. This is associated with high impulse error rates. Focused training on this module will enhance behavioral inhibition.`,
+        ta: `நோயாளி அளவு கண்டறிதல் மற்றும் பதில் தடுப்பு சோதனையில் தனது குறைந்தபட்ச துல்லியத்தை (${s.acc.toFixed(1)}%) காட்டுகிறார். இது அதிக உணர்ச்சிவசப்படும் பிழை விகிதங்களுடன் தொடர்புடையது. இந்த தொகுதியில் கவனம் செலுத்துவது நடத்தை தடுப்பை மேம்படுத்தும்.`,
+        ms: `Pesakit menunjukkan ketepatan prestasi terendah (${s.acc.toFixed(1)}%) dalam Cari Kuantiti & Perencatan Tindak Balas. Ini dikaitkan dengan kadar ralat impuls yang tinggi. Latihan terfokus pada modul ini akan meningkatkan perencatan tingkah laku.`
+      }[lang] || "";
     }
+    
+    return bestTraining;
+  };
 
-    // 趋势变化分析 (治疗成果评估)
-    let trendAnalysis = t.insightTrendNone;
-    if (metrics.hasTrend) {
-      const rtText = metrics.rtTrend < 0
-        ? t.rtTrendDecreased(Math.abs(metrics.rtTrend))
-        : metrics.rtTrend > 0
-          ? t.rtTrendIncreased(metrics.rtTrend)
-          : t.rtTrendStable;
+  const getLocalizedDomainFocus = (stats) => {
+    const c = stats?.classic || { total: 0, acc: 0, rt: 0 };
+    const i = stats?.incongruent || { total: 0, acc: 0, rt: 0 };
+    const s = stats?.shape || { total: 0, acc: 0, rt: 0 };
 
-      const accText = metrics.accTrend > 0
-        ? t.accTrendIncreased(metrics.accTrend)
-        : metrics.accTrend < 0
-          ? t.accTrendDecreased(Math.abs(metrics.accTrend))
-          : t.accTrendStable;
+    return [
+      {
+        name: t.reportDomainInhibition,
+        explanation: {
+          zh: `基础颜色测试正确率为 ${c.acc.toFixed(1)}%。目标是维持持续专注并控制冲动按键错误。`,
+          en: `Baseline Color Go/No-Go accuracy is ${c.acc.toFixed(1)}%. Target is to sustain attention and limit impulse errors.`,
+          ta: `அடிப்படை வண்ண பதில் சோதனையின் துல்லியம் ${c.acc.toFixed(1)}%. கவனம் செலுத்துவது மற்றும் பிழைகளைக் குறைப்பதே இதன் இலக்காகும்.`,
+          ms: `Ketepatan Warna Asas garis dasar ialah ${c.acc.toFixed(1)}%. Sasaran adalah untuk mengekalkan perhatian dan mengehadkan ralat impuls.`
+        }[lang],
+        target: {
+          zh: "Wait 信号下的正确率提升至 > 90%",
+          en: "Target accuracy > 90% in Wait trials.",
+          ta: "Wait சோதனைகளில் துல்லியம் > 90% அடைதல்.",
+          ms: "Ketepatan sasaran > 90% dalam ujian Wait."
+        }[lang],
+        color: '#3b82f6'
+      },
+      {
+        name: t.reportDomainFlexibility,
+        explanation: {
+          zh: `逆向冲突规则的切换正确率为 ${i.acc.toFixed(1)}%。目标是提高高认知负荷下的思维重构效率。`,
+          en: `Reverse conflict rule-switching accuracy is ${i.acc.toFixed(1)}%. Target is to improve switching efficiency under cognitive load.`,
+          ta: `தலைகீழ் சிந்தனை சோதனையின் துல்லியம் ${i.acc.toFixed(1)}%. அறிவாற்றல் சுமையின் கீழ் மாற்றுத் திறனை மேம்படுத்துவதே இதன் இலக்காகும்.`,
+          ms: `Ketepatan penukaran peraturan konflik songsang ialah ${i.acc.toFixed(1)}%. Sasaran adalah meningkatkan kecekapan penukaran di bawah beban kognitif.`
+        }[lang],
+        target: {
+          zh: "将逆向思维的响应延迟降低 50ms",
+          en: "Reduce reaction time latency by 50ms in Incongruent mode.",
+          ta: "எதிர்வினை நேர தாமதத்தை 50ms குறைத்தல்.",
+          ms: "Kurangkan kelewatan masa tindak balas sebanyak 50ms dalam mod Incongruent."
+        }[lang],
+        color: '#f59e0b'
+      },
+      {
+        name: t.reportDomainProcessing,
+        explanation: {
+          zh: `数量辨识正确率为 ${s.acc.toFixed(1)}%。目标是稳定运动控制并恢复合理的反应速度。`,
+          en: `Quantity Subitizing accuracy is ${s.acc.toFixed(1)}%. Target is to stabilize processing speed and motor control.`,
+          ta: `அளவு கண்டறிதல் சோதனையின் துல்லியம் ${s.acc.toFixed(1)}%. செயலாக்க வேகம் மற்றும் கட்டுப்பாட்டை நிலைநிறுத்துவதே இதன் இலக்காகும்.`,
+          ms: `Ketepatan Cari Kuantiti ialah ${s.acc.toFixed(1)}%. Sasaran adalah untuk menstabilkan kelajuan pemprosesan dan kawalan motor.`
+        }[lang],
+        target: {
+          zh: "稳定每次按键反应时间在 400ms - 600ms 之间",
+          en: "Achieve stable reaction times between 400ms - 600ms.",
+          ta: "எதிர்வினை நேரத்தை 400ms - 600ms இடையே நிலைநிறுத்துதல்.",
+          ms: "Capai masa tindak balas stabil antara 400ms - 600ms."
+        }[lang],
+        color: '#10b981'
+      }
+    ];
+  };
 
-      const statusText = metrics.accTrend > 0 && metrics.rtTrend <= 0
-        ? t.statusSignificant
-        : (metrics.accTrend >= 0 ? t.statusModerate : t.statusFluctuating);
+  const getLocalizedSummary = (stats, bestTrainingText, worstDomainText) => {
+    const name = patientProfile?.name || "Patient";
+    const pres = getPresentationText(patientProfile?.presentation);
+    const sev = getSeverityText(patientProfile?.severity);
+    const c = stats?.classic || { total: 0, acc: 0, rt: 0 };
+    const i = stats?.incongruent || { total: 0, acc: 0, rt: 0 };
+    const s = stats?.shape || { total: 0, acc: 0, rt: 0 };
 
-      trendAnalysis = t.insightTrendSummary(rtText, accText, statusText);
+    const c_rt_str = c.total > 0 ? `${c.rt.toFixed(0)} ms` : "N/A";
+    const i_rt_str = i.total > 0 ? `${i.rt.toFixed(0)} ms` : "N/A";
+    const s_rt_str = s.total > 0 ? `${s.rt.toFixed(0)} ms` : "N/A";
+
+    return {
+      zh: (
+        <div>
+          <p style={{ margin: '0 0 10px 0' }}>关于患者 <strong>{name}</strong> 的多模态认知神经心理学综合分析报告（表现分型: <strong>{pres}</strong>，严重程度: <strong>{sev}</strong>）：</p>
+          <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px', listStyleType: 'disc' }}>
+            <li style={{ marginBottom: '4px' }}><strong>基础颜色持续反应模式 (Color Go/No-Go):</strong> 已完成 <strong>{c.total}</strong> 次有效测试，中枢正确率为 <strong>{c.acc.toFixed(1)}%</strong>，平均响应时值为 <strong>{c_rt_str}</strong>。</li>
+            <li style={{ marginBottom: '4px' }}><strong>逆向思维冲突灵活性模式 (Cognitive Flexibility):</strong> 已完成 <strong>{i.total}</strong> 次有效测试，中枢正确率为 <strong>{i.acc.toFixed(1)}%</strong>，平均响应时值为 <strong>{i_rt_str}</strong>。</li>
+            <li style={{ marginBottom: '4px' }}><strong>数量辨识冲动行为抑制模式 (Quantity Subitizing):</strong> 已完成 <strong>{s.total}</strong> 次有效测试，中枢正确率为 <strong>{s.acc.toFixed(1)}%</strong>，平均响应时值为 <strong>{s_rt_str}</strong>。</li>
+          </ul>
+          <p style={{ margin: '10px 0 0 0', borderTop: '1px dashed #cbd5e1', paddingTop: '10px' }}><strong>临床结论:</strong> 经过多维联合算法的自适应评估，发现该患者当前的主要认知短板位于 <strong>{worstDomainText}</strong>。为了有针对性地对受损脑网络实施代偿和突触激活，当前疗程的最佳数字疗法处方建议是 <strong>{bestTrainingText}</strong>。</p>
+        </div>
+      ),
+      en: (
+        <div>
+          <p style={{ margin: '0 0 10px 0' }}>Comprehensive neuropsychology report for patient <strong>{name}</strong> (Presentation: <strong>{pres}</strong>, Severity: <strong>{sev}</strong>):</p>
+          <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px', listStyleType: 'disc' }}>
+            <li style={{ marginBottom: '4px' }}><strong>Phase 1 (Color Go/No-Go):</strong> Completed <strong>{c.total}</strong> trials with <strong>{c.acc.toFixed(1)}%</strong> accuracy and average RT of <strong>{c_rt_str}</strong>.</li>
+            <li style={{ marginBottom: '4px' }}><strong>Phase 2 (Cognitive Flexibility):</strong> Completed <strong>{i.total}</strong> trials with <strong>{i.acc.toFixed(1)}%</strong> accuracy and average RT of <strong>{i_rt_str}</strong>.</li>
+            <li style={{ marginBottom: '4px' }}><strong>Phase 3 (Quantity Subitizing):</strong> Completed <strong>{s.total}</strong> trials with <strong>{s.acc.toFixed(1)}%</strong> accuracy and average RT of <strong>{s_rt_str}</strong>.</li>
+          </ul>
+          <p style={{ margin: '10px 0 0 0', borderTop: '1px dashed #cbd5e1', paddingTop: '10px' }}><strong>Clinical Diagnosis:</strong> Based on multi-game tracking, the patient's primary cognitive challenge is in the domain of <strong>{worstDomainText}</strong>. To target this executive bottleneck, the optimal intervention is <strong>{bestTrainingText}</strong>.</p>
+        </div>
+      ),
+      ta: (
+        <div>
+          <p style={{ margin: '0 0 10px 0' }}>நோயாளி <strong>{name}</strong> க்கான விரிவான நரம்பியல் உளவியல் பகுப்பாய்வு அறிக்கை (வகைப்பாடு: <strong>{pres}</strong>, தீவிர நிலை: <strong>{sev}</strong>):</p>
+          <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px', listStyleType: 'disc' }}>
+            <li style={{ marginBottom: '4px' }}><strong>வண்ண பதில் சோதனை (Color Go/No-Go):</strong> <strong>{c.total}</strong> சோதனைகள் முடிவடைந்தன, துல்லியம் <strong>{c.acc.toFixed(1)}%</strong>, சராசரி RT <strong>{c_rt_str}</strong>.</li>
+            <li style={{ marginBottom: '4px' }}><strong>தலைகீழ் சிந்தனை சோதனை (Cognitive Flexibility):</strong> <strong>{i.total}</strong> சோதனைகள் முடிவடைந்தன, துல்லியம் <strong>{i.acc.toFixed(1)}%</strong>, சராசரி RT <strong>{i_rt_str}</strong>.</li>
+            <li style={{ marginBottom: '4px' }}><strong>அளவு கண்டறிதல் சோதனை (Quantity Subitizing):</strong> <strong>{s.total}</strong> சோதனைகள் முடிவடைந்தன, துல்லியம் <strong>{s.acc.toFixed(1)}%</strong>, சராசரி RT <strong>{s_rt_str}</strong>.</li>
+          </ul>
+          <p style={{ margin: '10px 0 0 0', borderTop: '1px dashed #cbd5e1', paddingTop: '10px' }}><strong>மருத்துவ முடிவு:</strong> நோயாளிக்கு தற்போதைய அறிவாற்றல் சவால் <strong>{worstDomainText}</strong> களத்தில் உள்ளது. இந்த தடையை சரிசெய்ய சிறந்த டிஜிட்டல் சிகிச்சை பரிந்துரை <strong>{bestTrainingText}</strong> ஆகும்.</p>
+        </div>
+      ),
+      ms: (
+        <div>
+          <p style={{ margin: '0 0 10px 0' }}>Laporan neuropsikologi komprehensif untuk pesakit <strong>{name}</strong> (Persembahan: <strong>{pres}</strong>, Keterukan: <strong>{sev}</strong>):</p>
+          <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px', listStyleType: 'disc' }}>
+            <li style={{ marginBottom: '4px' }}><strong>Fasa 1 (Color Go/No-Go):</strong> Selesai <strong>{c.total}</strong> ujian dengan <strong>{c.acc.toFixed(1)}%</strong> ketepatan dan purata RT sebanyak <strong>{c_rt_str}</strong>.</li>
+            <li style={{ marginBottom: '4px' }}><strong>Fasa 2 (Cognitive Flexibility):</strong> Selesai <strong>{i.total}</strong> ujian dengan <strong>{i.acc.toFixed(1)}%</strong> ketepatan dan purata RT sebanyak <strong>{i_rt_str}</strong>.</li>
+            <li style={{ marginBottom: '4px' }}><strong>Fasa 3 (Quantity Subitizing):</strong> Selesai <strong>{s.total}</strong> ujian dengan <strong>{s.acc.toFixed(1)}%</strong> ketepatan dan purata RT sebanyak <strong>{s_rt_str}</strong>.</li>
+          </ul>
+          <p style={{ margin: '10px 0 0 0', borderTop: '1px dashed #cbd5e1', paddingTop: '10px' }}><strong>Kesimpulan Klinikal:</strong> Berdasarkan trajektori dwi-trek kognitif, kelemahan utama pesakit berada dalam domain <strong>{worstDomainText}</strong>. Latihan preskripsi digital terbaik yang dicadangkan adalah <strong>{bestTrainingText}</strong>.</p>
+        </div>
+      )
+    }[lang] || "";
+  };
+
+  const getLocalizedExercises = () => {
+    return [
+      {
+        title: {
+          zh: "1. 基础颜色持续反应滴定训练 (Color Go/No-Go Titration)",
+          en: "1. Color Go/No-Go Titration",
+          ta: "1. வண்ண பதில் சோதனை பயிற்சி (Color Go/No-Go Titration)",
+          ms: "1. Titrasi Warna Asas (Color Go/No-Go Titration)"
+        }[lang],
+        description: {
+          zh: "根据后台自适应心智滴定系统，实时调整刺激出现间隔的持续动作抑制控制训练。",
+          en: "Rapid execution and motor inhibition task calibrated dynamically by the backend.",
+          ta: "தூண்டுதல் கால அளவை மாறும் வகையில் அளவீடு செய்யும் விரைவான பதில் சோதனை பயிற்சி.",
+          ms: "Tugas pelaksanaan pantas dan perencatan motor yang ditentukur secara dinamik oleh backend."
+        }[lang],
+        rationale: {
+          zh: "激活前额叶内侧前运动皮层，加强神经反射阀门的控制能力，减少漏点和误触。",
+          en: "Strengthens prefrontal executive control and behavioral inhibition networks.",
+          ta: "முன்நெற்றி புறணி செயல்பாடுகள் மற்றும் நடத்தை தடுப்பு வலையமைப்பை வலுப்படுத்துகிறது.",
+          ms: "Menguatkan kawalan eksekutif prefrontal dan rangkaian perencatan tingkah laku."
+        }[lang],
+        frequency: {
+          zh: "每日 10 分钟",
+          en: "10 minutes / daily",
+          ta: "தினமும் 10 நிமிடங்கள்",
+          ms: "10 minit / harian"
+        }[lang]
+      },
+      {
+        title: {
+          zh: "2. 逆向思维冲突灵活性训练 (Reverse Conflict Flexibility)",
+          en: "2. Reverse Conflict Flexibility",
+          ta: "2. தலைகீழ் சிந்தனை பயிற்சி (Reverse Conflict Flexibility)",
+          ms: "2. Ujian Minda Songsang (Reverse Conflict Flexibility)"
+        }[lang],
+        description: {
+          zh: "对抗第一直觉肌肉习惯（如猴子图像点击左侧、大象图像点击右侧的反直觉映射）。",
+          en: "Counter-intuitive visual-spatial stimulus mappings (monkey/elephant reverse click).",
+          ta: "உள்ளுணர்வுக்கு எதிரான காட்சி-இடஞ்சார்ந்த தூண்டுதல் வரைபடங்கள் (குரங்கு/யானை தலைகீழ் கிளிக்).",
+          ms: "Pemetaan rangsangan visual-spatial yang bertentangan dengan intuisi (klik terbalik monyet/gajah)."
+        }[lang],
+        rationale: {
+          zh: "深度动员前扣带回皮层（ACC）进行多规则快速切换的重组，改善大脑多巴胺资源配置。",
+          en: "Engages the anterior cingulate cortex (ACC) to improve rule-switching cognitive agility.",
+          ta: "விதி-மாற்ற அறிவாற்றல் சுறுசுறுப்பை மேம்படுத்த முன்புற சிங்குலேட் கார்டெக்ஸை (ACC) ஈர்க்கிறது.",
+          ms: "Melibatkan anterior cingulate cortex (ACC) untuk meningkatkan ketangkasan kognitif penukaran peraturan."
+        }[lang],
+        frequency: {
+          zh: "每日 5 分钟",
+          en: "5 minutes / daily",
+          ta: "தினமும் 5 நிமிடங்கள்",
+          ms: "5 minit / harian"
+        }[lang]
+      }
+    ];
+  };
+
+  const getLocalizedLifestyle = () => {
+    return [
+      {
+        category: {
+          zh: "💤 睡眠卫生调理",
+          en: "💤 Sleep Hygiene",
+          ta: "💤 தூக்க தூய்மை",
+          ms: "💤 Kebersihan Tidur"
+        }[lang],
+        action: {
+          zh: "严格保证每日 8 小时睡眠，睡前 1 小时内断开所有蓝光屏幕的接触。",
+          en: "Maintain a strict 8-hour sleep schedule with zero blue-light exposure 1 hour before bed.",
+          ta: "படுக்கைக்கு 1 மணி நேரத்திற்கு முன் நீல-ஒளி வெளிப்பாடு இல்லாமல் கடுமையான 8 மணி நேர தூக்க அட்டவணையை பராமரிக்கவும்.",
+          ms: "Kekalkan jadual tidur 8 jam yang ketat tanpa pendedahan cahaya biru 1 jam sebelum tidur."
+        }[lang],
+        rationale: {
+          zh: "促进胶质淋巴通道运行，清除中枢代谢毒物并重组突触突触后膜受体活性。",
+          en: "Optimizes glymphatic clearance and restores prefrontal resource pools.",
+          ta: "மூளையின் கழிவு வெளியேற்றத்தை மேம்படுத்துகிறது மற்றும் முன்நெற்றி வளங்களை மீட்டெடுக்கிறது.",
+          ms: "Mengoptimumkan pembersihan glymphatic dan memulihkan sumber prefrontal."
+        }[lang]
+      },
+      {
+        category: {
+          zh: "⏰ 认知变频 pacing 调理",
+          en: "⏰ Cognitive Pacing",
+          ta: "⏰ அறிவாற்றல் வேகக் கட்டுப்பாடு",
+          ms: "⏰ Pacing Kognitif"
+        }[lang],
+        action: {
+          zh: "每 25 分钟脑力活动后，必须强制静息 5 分钟进行视觉和肢体放松（番茄工作法）。",
+          en: "Implement 25-minute study/work blocks followed by 5 minutes of visual rest (Pomodoro).",
+          ta: "25 நிமிட படிப்பு/வேலைக்கு பிறகு 5 நிமிடங்கள் கண் ஓய்வு எடுக்கவும் (Pomodoro).",
+          ms: "Laksanakan blok belajar/kerja 25 minit diikuti dengan 5 minit rehat visual (Pomodoro)."
+        }[lang],
+        rationale: {
+          zh: "防止前额叶执行功能区受累引发资源彻底枯竭，抑制中枢注意力衰退漂移。",
+          en: "Prevents sustained-attention drift and cognitive exhaustion.",
+          ta: "தொடர்ச்சியான கவனச் சிதறல் மற்றும் அறிவாற்றல் சோர்வைத் தடுக்கிறது.",
+          ms: "Mengelakkan hanyut perhatian berterusan dan keletihan kognitif."
+        }[lang]
+      }
+    ];
+  };
+
+  const getLocalizedOutlook = () => {
+    return {
+      zh: "🔮 在持续遵循自适应数字训练和睡眠调理方案的前提下，预计患者的前额叶执行控制网络将在 4 到 6 周内表现出显著的突触可塑性改善与反应稳定性增强。",
+      en: "🔮 With consistent adherence to the adaptive titration protocol and sleep hygiene recommendations, the patient's prefrontal executive control networks are expected to show significant plastic remodeling and stability within 4-6 weeks.",
+      ta: "🔮 தகவமைப்பு நெறிமுறை மற்றும் தூக்க சுகாதார பரிந்துரைகளை தொடர்ந்து கடைப்பிடிப்பதன் மூலம், நோயாளியின் முன்நெற்றி கட்டுப்பாட்டு வலையமைப்புகள் 4-6 வாரங்களுக்குள் குறிப்பிடத்தக்க புனரமைப்பு மற்றும் ஸ்திரத்தன்மையைக் காட்டும் என்று எதிர்பார்க்கப்படுகிறது.",
+      ms: "🔮 Dengan pematuhan konsisten kepada protokol titrasi penyesuaian dan cadangan kebersihan tidur, rangkaian kawalan eksekutif prefrontal pesakit dijangka menunjukkan pembentukan semula plastik dan kestabilan yang ketara dalam tempoh 4-6 minggu."
+    }[lang];
+  };
+
+  const getWorstDomainLocalized = (bestTraining) => {
+    if (bestTraining?.includes("Color Go/No-Go")) {
+      return {
+        zh: "持续性注意力维持 (Sustained Attention)",
+        en: "Sustained Attention (Color Go/No-Go)",
+        ta: "கவனம் செலுத்துதல் (Sustained Attention)",
+        ms: "Perhatian Berterusan (Sustained Attention)"
+      }[lang];
     }
-
-    return (
-      <>
-        <strong>[{t.reportNeuroLabel}]</strong> {neuroAnalysis}
-        <br />
-        <strong>[{t.reportTrendLabel}]</strong> {trendAnalysis}
-        <br />
-        <strong>[{t.reportPresLabel}]</strong> {prescription}
-      </>
-    );
+    if (bestTraining?.includes("Cognitive Flexibility")) {
+      return {
+        zh: "冲突规则灵活性切换 (Cognitive Flexibility)",
+        en: "Cognitive Flexibility (Reverse Conflict)",
+        ta: "அறிவாற்றல் நெகிழ்வுத்தன்மை (Cognitive Flexibility)",
+        ms: "Fleksibiliti Kognitif (Cognitive Flexibility)"
+      }[lang];
+    }
+    if (bestTraining?.includes("Quantity Subitizing")) {
+      return {
+        zh: "冲动响应抑制与控制 (Response Inhibition)",
+        en: "Response Inhibition (Quantity Subitizing)",
+        ta: "படைப்பு தடுப்பு மற்றும் கட்டுப்பாடு (Response Inhibition)",
+        ms: "Perencatan Tindak Balas (Response Inhibition)"
+      }[lang];
+    }
+    return {
+      zh: "持续性注意力维持 (Sustained Attention)",
+      en: "Sustained Attention",
+      ta: "கவனம் செலுத்துதல்",
+      ms: "Perhatian Berterusan"
+    }[lang];
   };
 
   const getLineColor = () => {
@@ -841,7 +1230,16 @@ function DoctorDashboard({ lang = 'zh' }) {
                       <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                       <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} minTickGap={10} hide={true} />
                       <YAxis stroke="#94a3b8" domain={['dataMin - 30', 'dataMax + 30']} fontSize={11} width={45} />
-                      <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }} formatter={(value) => [`${value} ms`, t.chartRTTooltip]} />
+                      <Tooltip 
+                        contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }} 
+                        formatter={(value) => [`${value} ms`, t.chartRTTooltip]} 
+                        labelFormatter={(label) => {
+                          const dataPoint = chartData.find(d => d.name === label);
+                          return dataPoint && dataPoint.completedTime 
+                            ? `${label} (${lang === 'zh' ? '完成时间' : 'Completed'}: ${dataPoint.completedTime})`
+                            : label;
+                        }}
+                      />
                       <Line type="monotone" dataKey="avgReactionTime" name={t.chartRTLegend} stroke={getLineColor()} strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} connectNulls={true} />
                     </LineChart>
                   </ResponsiveContainer>
@@ -854,27 +1252,130 @@ function DoctorDashboard({ lang = 'zh' }) {
                       <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                       <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} minTickGap={10} />
                       <YAxis stroke="#94a3b8" domain={[0, 100]} fontSize={11} width={45} tickFormatter={(tick) => `${tick}%`} />
-                      <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }} formatter={(value) => [`${value}%`, t.chartAccTooltip]} />
+                      <Tooltip 
+                        contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }} 
+                        formatter={(value) => [`${value}%`, t.chartAccTooltip]} 
+                        labelFormatter={(label) => {
+                          const dataPoint = chartData.find(d => d.name === label);
+                          return dataPoint && dataPoint.completedTime 
+                            ? `${label} (${lang === 'zh' ? '完成时间' : 'Completed'}: ${dataPoint.completedTime})`
+                            : label;
+                        }}
+                      />
                       <Line type="stepAfter" dataKey="accuracy" name={t.chartAccLegend} stroke="#ec4899" strokeWidth={3} dot={{ r: 4, fill: '#ec4899' }} activeDot={{ r: 6 }} connectNulls={true} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
               </div>
 
-              {/* AI 报告 */}
-              <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.02)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', borderBottom: '1px solid #f1f5f9', paddingBottom: '10px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <h4 style={{ margin: 0, color: '#0f172a' }}>{t.reportTitle}</h4>
+              {/* AI Clinical Consultation Report */}
+              {(!currentPatientId) ? (
+                <div style={{ background: '#ffffff', border: '1px dashed #cbd5e1', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', color: '#64748b', marginTop: '30px' }}>
+                  <div style={{ fontSize: '32px', marginBottom: '10px' }}>📋</div>
+                  <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>{t.reportSelectPatientTip}</p>
+                </div>
+              ) : loadingAI ? (
+                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', color: '#3b82f6', marginTop: '30px' }}>
+                  <div style={{ fontSize: '32px', marginBottom: '10px', animation: 'spin 2s linear infinite' }}>🔄</div>
+                  <p style={{ margin: 0, fontSize: '14px', fontWeight: '600' }}>{t.reportGenerating}</p>
+                </div>
+              ) : (!aiReport || !aiReport.stats || (aiReport.stats.classic.total === 0 && aiReport.stats.incongruent.total === 0 && aiReport.stats.shape.total === 0)) ? (
+                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '30px', color: '#64748b', marginTop: '30px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.02)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', borderBottom: '1px solid #f1f5f9', paddingBottom: '10px' }}>
+                    <h4 style={{ margin: 0, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '8px' }}>{t.reportTitle}</h4>
+                    <span style={{ fontSize: '11px', background: '#eff6ff', color: '#2563eb', padding: '3px 10px', borderRadius: '20px', fontWeight: 'bold' }}>{t.reportCopilot}</span>
                   </div>
-                  <span style={{ fontSize: '11px', background: '#eff6ff', color: '#2563eb', padding: '3px 10px', borderRadius: '20px', fontWeight: 'bold' }}>{t.reportCopilot}</span>
+                  <div style={{ textAlign: 'center', padding: '20px' }}>
+                    <div style={{ fontSize: '30px', marginBottom: '10px' }}>⚠️</div>
+                    <p style={{ margin: 0, fontSize: '14px', fontWeight: '500', lineHeight: '1.6' }}>{t.reportNoData}</p>
+                  </div>
                 </div>
-                <div style={{ fontSize: '14px', lineHeight: '1.7', color: '#334155' }}>
-                  {t.reportAutoRating(currentPatientId, metrics.avgTime, metrics.accuracy)}
-                  <br />
-                  {renderAIInsight()}
+              ) : (
+                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.02)', marginTop: '30px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', borderBottom: '1px solid #f1f5f9', paddingBottom: '12px' }}>
+                    <h4 style={{ margin: 0, color: '#0f172a', fontSize: '18px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>{t.reportTitle}</h4>
+                    <span style={{ fontSize: '11px', background: '#eff6ff', color: '#2563eb', padding: '4px 12px', borderRadius: '20px', fontWeight: 'bold' }}>{t.reportCopilot}</span>
+                  </div>
+                  
+                  {/* Summary */}
+                  <div style={{ fontSize: '13.5px', lineHeight: '1.7', color: '#334155', background: '#f8fafc', padding: '16px', borderRadius: '10px', borderLeft: '4px solid #cbd5e1', marginBottom: '20px' }}>
+                    <h5 style={{ margin: '0 0 8px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionSummary}</h5>
+                    {getLocalizedSummary(aiReport.stats, getLocalizedBestTraining(aiReport.bestTraining), getWorstDomainLocalized(aiReport.bestTraining))}
+                  </div>
+
+                  {/* Priority Recommendation */}
+                  {(() => {
+                    const bestTrainingText = getLocalizedBestTraining(aiReport.bestTraining);
+                    const isClassic = aiReport.bestTraining?.includes("Color Go/No-Go");
+                    const isIncongruent = aiReport.bestTraining?.includes("Cognitive Flexibility");
+                    const accentColor = isClassic ? '#2563eb' : (isIncongruent ? '#d97706' : '#10b981');
+                    const accentBg = isClassic ? '#f0f7ff' : (isIncongruent ? '#fffbeb' : '#f0fdf4');
+                    const accentBorder = isClassic ? '#dbeafe' : (isIncongruent ? '#fef3c7' : '#dcfce7');
+                    
+                    return (
+                      <div style={{ background: accentBg, border: `1px solid ${accentBorder}`, borderRadius: '10px', padding: '16px', marginBottom: '20px', borderLeft: `6px solid ${accentColor}` }}>
+                        <h5 style={{ margin: '0 0 6px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>
+                          {t.reportSectionRecommendation}: <span style={{ color: accentColor }}>{bestTrainingText}</span>
+                        </h5>
+                        <p style={{ margin: 0, fontSize: '13px', color: '#334155', lineHeight: '1.6' }}>
+                          <strong>{t.reportSectionReasoning}:</strong> {getLocalizedReasoning(aiReport.bestTraining, aiReport.stats)}
+                        </p>
+                      </div>
+                    );
+                  })()}
+
+                  {/* Domain Focus */}
+                  <h5 style={{ margin: '24px 0 12px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionDomains}</h5>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+                    {getLocalizedDomainFocus(aiReport.stats).map((dom, idx) => (
+                      <div key={idx} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', borderLeft: `4px solid ${dom.color}`, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div>
+                          <div style={{ color: '#0f172a', fontSize: '13px', fontWeight: 'bold', marginBottom: '6px' }}>{dom.name}</div>
+                          <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}>{dom.explanation}</p>
+                        </div>
+                        <div style={{ fontSize: '11px', color: dom.color, fontWeight: 'bold', background: '#fff', border: `1px solid ${dom.color}33`, padding: '5px 10px', borderRadius: '6px', display: 'inline-block', alignSelf: 'flex-start' }}>🎯 {dom.target}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Prescribed Exercises */}
+                  <h5 style={{ margin: '24px 0 12px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionExercises}</h5>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+                    {getLocalizedExercises().map((ex, idx) => (
+                      <div key={idx} style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div>
+                          <div style={{ color: '#0f172a', fontSize: '13px', fontWeight: 'bold', marginBottom: '4px' }}>{ex.title}</div>
+                          <div style={{ fontSize: '11px', color: '#2563eb', fontWeight: 'bold', marginBottom: '10px' }}>⏰ {ex.frequency}</div>
+                          <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}>{ex.description}</p>
+                        </div>
+                        <div style={{ margin: 0, fontSize: '11px', color: '#64748b', fontStyle: 'italic', background: '#f8fafc', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #cbd5e1' }}>
+                          <strong>Clinical Rationale:</strong> {ex.rationale}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Lifestyle Protocols */}
+                  <h5 style={{ margin: '24px 0 12px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionLifestyle}</h5>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+                    {getLocalizedLifestyle().map((life, idx) => (
+                      <div key={idx} style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div>
+                          <div style={{ color: '#0f172a', fontSize: '13.5px', fontWeight: 'bold', marginBottom: '8px' }}>{life.category}</div>
+                          <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}><strong>Action:</strong> {life.action}</p>
+                        </div>
+                        <div style={{ margin: 0, fontSize: '11px', color: '#64748b', fontStyle: 'italic', background: '#f8fafc', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #cbd5e1' }}>
+                          <strong>Rationale:</strong> {life.rationale}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Prognosis */}
+                  <h5 style={{ margin: '24px 0 8px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionOutlook}</h5>
+                  <p style={{ margin: 0, fontSize: '12.5px', color: '#475569', lineHeight: '1.6', background: '#f5f3ff', padding: '14px 18px', borderRadius: '10px', borderLeft: '4px solid #8b5cf6' }}>{getLocalizedOutlook()}</p>
                 </div>
-              </div>
+              )}
             </div>
           )}
         </div>
@@ -898,7 +1399,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                   placeholder={t.modalPatientIdPlh} 
                   value={createFormData.patient_id}
                   onChange={(e) => setCreateFormData({ ...createFormData, patient_id: e.target.value })}
-                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
+                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
                   required
                 />
               </div>
@@ -910,7 +1411,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                     placeholder={t.modalNamePlh} 
                     value={createFormData.name}
                     onChange={(e) => setCreateFormData({ ...createFormData, name: e.target.value })}
-                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
+                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
                     required
                   />
                 </div>
@@ -920,7 +1421,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                     type="number" 
                     value={createFormData.age}
                     onChange={(e) => setCreateFormData({ ...createFormData, age: parseInt(e.target.value) || 8 })}
-                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
+                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
                     min="2"
                     max="99"
                     required
@@ -933,7 +1434,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                   <select 
                     value={createFormData.gender}
                     onChange={(e) => setCreateFormData({ ...createFormData, gender: e.target.value })}
-                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', background: '#fff' }}
+                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
                   >
                     <option value="男">{t.genderMale}</option>
                     <option value="女">{t.genderFemale}</option>
@@ -944,7 +1445,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                   <select 
                     value={createFormData.severity}
                     onChange={(e) => setCreateFormData({ ...createFormData, severity: e.target.value })}
-                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', background: '#fff' }}
+                    style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
                   >
                     <option value=""></option>
                     <option value="Mild">{getSeverityText("Mild")}</option>
@@ -958,7 +1459,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                 <select 
                   value={createFormData.presentation}
                   onChange={(e) => setCreateFormData({ ...createFormData, presentation: e.target.value })}
-                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', background: '#fff' }}
+                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
                 >
                   <option value="Inattentive">{getPresentationText("Inattentive")}</option>
                   <option value="Hyperactive-Impulsive">{getPresentationText("Hyperactive-Impulsive")}</option>

@@ -32,7 +32,8 @@ const translations = {
     shapeWait: "2 个蓝色圆形：抑制行为（不要触碰屏幕）。",
     waitPlus: "+",
     go: "GO",
-    wait: "WAIT"
+    wait: "WAIT",
+    uploadWarning: "⚠️ 警告：为了成功上传您的训练数据，您必须坐下并完成整个训练序列，中途离开会导致测试数据丢失。"
   },
   en: {
     testIdentity: "Test Identity:",
@@ -63,7 +64,8 @@ const translations = {
     shapeWait: "2 Blue Circles: Inhibit behavior (do NOT touch the screen).",
     waitPlus: "+",
     go: "GO",
-    wait: "WAIT"
+    wait: "WAIT",
+    uploadWarning: "⚠️ Warning: You have to sit for the entire training session to upload the data, otherwise it will cause the loss of training data."
   },
   ta: {
     testIdentity: "சோதனை அடையாளம்:",
@@ -94,7 +96,8 @@ const translations = {
     shapeWait: "2 நீல வட்டங்கள்: செயலைத் தடுக்கவும் (திரையைத் தொட வேண்டாம்).",
     waitPlus: "+",
     go: "GO",
-    wait: "WAIT"
+    wait: "WAIT",
+    uploadWarning: "⚠️ எச்சரிக்கை: தரவைப் பதிவேற்ற நீங்கள் முழுப் பயிற்சி அமர்விலும் அமர வேண்டும், இல்லையெனில் பயிற்சித் தரவு இழக்கப்படும்."
   },
   ms: {
     testIdentity: "Identiti Ujian:",
@@ -125,14 +128,17 @@ const translations = {
     shapeWait: "2 Bulatan Biru: Hentikan tindakan (jangan sentuh skrin).",
     waitPlus: "+",
     go: "GO",
-    wait: "WAIT"
+    wait: "WAIT",
+    uploadWarning: "⚠️ Amaran: Anda mesti duduk sepanjang sesi latihan untuk memuat naik data, jika tidak ia akan menyebabkan kehilangan data latihan."
   }
 };
 
 function CognitiveGame({ onGameComplete, lang = 'zh' }) {
   const [gameState, setGameState] = useState('IDLE'); 
   const [severityInfo, setSeverityInfo] = useState('Loading...');
-  
+  const [patientReport, setPatientReport] = useState(null);
+  const [loadingReport, setLoadingReport] = useState(false);
+
   // 核心修改：动态患者绑定体系，取代曾经写死的 patientId 属性
   const [patientsList, setPatientsList] = useState([]);
   const [activePatientId, setActivePatientId] = useState("patient_001");
@@ -180,6 +186,29 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
       if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (gameState === 'FINISHED') {
+      setLoadingReport(true);
+      fetch('http://localhost:8000/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patient_id: activePatientId })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error("Failed to fetch analysis");
+          return res.json();
+        })
+        .then(data => {
+          setPatientReport(data);
+          setLoadingReport(false);
+        })
+        .catch(err => {
+          console.error("Failed to load patient report:", err);
+          setLoadingReport(false);
+        });
+    }
+  }, [gameState, activePatientId]);
 
   const fetchAIConfigAndStart = () => {
     setGameState('LOADING_CONFIG');
@@ -484,7 +513,12 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
           </div>
 
           <h2 style={{ color: '#1e293b', marginBottom: '10px' }}>{text.title}</h2>
-          <p style={{ color: '#64748b', marginBottom: '30px' }}>{text.subtitle}</p>
+          <p style={{ color: '#64748b', marginBottom: '20px' }}>{text.subtitle}</p>
+
+          <div style={{ background: '#fffbeb', border: '1px solid #fef3c7', padding: '12px 16px', borderRadius: '8px', color: '#92400e', fontSize: '13px', margin: '0 auto 25px auto', maxWidth: '500px', display: 'flex', alignItems: 'center', gap: '8px', textAlign: 'left', fontWeight: '500' }}>
+            <span>{text.uploadWarning}</span>
+          </div>
+
           <button onClick={fetchAIConfigAndStart} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px 28px', borderRadius: '8px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' }}>
             {text.syncPrescription}
           </button>
@@ -500,6 +534,11 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
       {gameState === 'MODULE_INTRO' && (
         <div style={{ textAlign: 'center', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
           {renderModuleIntroduction()}
+
+          <div style={{ background: '#fffbeb', border: '1px solid #fef3c7', padding: '10px 14px', borderRadius: '8px', color: '#92400e', fontSize: '12px', margin: '15px 0', display: 'flex', alignItems: 'center', gap: '8px', textAlign: 'left', fontWeight: '500' }}>
+            <span>{text.uploadWarning}</span>
+          </div>
+
           <button onClick={handleStartCurrentModule} style={{ background: '#1e293b', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '8px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', marginTop: '15px' }}>
             {text.confirmStart}
           </button>
@@ -521,7 +560,7 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
 
       {/* ⚔️ E. 游戏核心战场 */}
       {gameState === 'PLAYING' && (
-        <div style={{ position: 'relative', width: '100%', height: '400px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.08)' }}>
+        <div style={{ position: 'relative', width: '100%', height: 'calc(100vh - 140px)', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.08)' }}>
           <div onClick={() => handleScreenSideClick('LEFT')} style={{ position: 'absolute', left: 0, top: 0, width: '50%', height: '100%', backgroundColor: '#f1f5f9', borderRight: '1px solid #cbd5e1', cursor: isWaiting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect: 'none' }}>
             {gameSequence[currentModuleIndex] === 'INCONGRUENT' && <span style={{ fontSize: '54px', opacity: isWaiting ? 0.3 : 1 }}>🐒</span>}
           </div>
@@ -546,10 +585,49 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
 
       {/* 🏁 F. 顺利通关页 */}
       {gameState === 'FINISHED' && (
-        <div style={{ textAlign: 'center', background: '#ecfdf5', padding: '40px', borderRadius: '16px', border: '2px solid #10b981', margin: '0 20px' }}>
+        <div style={{ textAlign: 'center', background: '#ecfdf5', padding: '40px', borderRadius: '16px', border: '2px solid #10b981', margin: '0 20px', overflowY: 'auto', maxHeight: '85vh' }}>
           <h2 style={{ color: '#065f46', marginBottom: '10px' }}>{text.completeTitle}</h2>
-          <p style={{ color: '#047857', fontSize: '14px', lineHeight: '1.6' }}>{text.completeDesc}</p>
-          <button onClick={() => setGameState('IDLE')} style={{ padding: '12px 24px', cursor: 'pointer', background: '#fff', border: '2px solid #10b981', borderRadius: '8px', fontWeight: 'bold', color: '#065f46' }}>{text.goBack}</button>
+          <p style={{ color: '#047857', fontSize: '14px', lineHeight: '1.6', marginBottom: '20px' }}>{text.completeDesc}</p>
+
+          <div style={{ background: '#ffffff', border: '1px solid #d1fae5', borderRadius: '12px', padding: '20px', textAlign: 'left', margin: '20px auto', maxWidth: '600px', boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+            <h3 style={{ margin: '0 0 12px 0', color: '#065f46', fontSize: '16px', borderBottom: '1px solid #e8f5e9', paddingBottom: '8px', fontWeight: 'bold' }}>
+              🧠 {lang === 'zh' ? '脑力训练个人评估报告' : lang === 'ta' ? 'அறிவாற்றal பயிற்சி அறிக்கை' : lang === 'ms' ? 'Laporan Prestasi Minda' : 'AI Brain Performance Report'}
+            </h3>
+            
+            {loadingReport ? (
+              <div style={{ color: '#047857', fontSize: '13px', fontStyle: 'italic', display: 'flex', items: 'center', gap: '8px' }}>
+                <span>{lang === 'zh' ? '正在分析反应速度与历史对比...' : 'Analyzing reaction speed and progress...'}</span>
+              </div>
+            ) : patientReport ? (
+              <div style={{ fontSize: '13px', lineHeight: '1.6', color: '#374151' }}>
+                <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', padding: '12px', borderRadius: '8px', marginBottom: '15px' }}>
+                  <strong style={{ color: '#166534' }}>📈 {lang === 'zh' ? '对比上次测试进展：' : 'Progress compared to last time: '}</strong>
+                  <span style={{ color: '#14532d' }}>{patientReport.comparison}</span>
+                </div>
+                
+                <div style={{ marginBottom: '15px' }}>
+                  <strong style={{ color: '#065f46' }}>📋 {lang === 'zh' ? '神经表现意见：' : 'Neurological Performance: '}</strong>
+                  <p style={{ margin: '4px 0 0 0', color: '#4b5563', fontStyle: 'italic' }}>"{patientReport.clinicianSummary}"</p>
+                </div>
+                
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px' }}>
+                  <strong style={{ color: '#065f46', marginTop: '5px' }}>💡 {lang === 'zh' ? '推荐训练计划：' : 'Prescribed Exercises: '}</strong>
+                  {patientReport.therapeuticExercises?.map((ex, idx) => (
+                    <div key={idx} style={{ background: '#f9fafb', border: '1px solid #e5e7eb', padding: '10px', borderRadius: '8px' }}>
+                      <div style={{ fontWeight: 'bold', color: '#1f2937' }}>{ex.title} ({ex.frequency})</div>
+                      <div style={{ color: '#6b7280', fontSize: '11px', marginTop: '2px' }}>{ex.description}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div style={{ color: '#dc2626', fontSize: '13px' }}>
+                Failed to sync detailed AI performance analysis.
+              </div>
+            )}
+          </div>
+
+          <button onClick={() => setGameState('IDLE')} style={{ padding: '12px 24px', cursor: 'pointer', background: '#fff', border: '2px solid #10b981', borderRadius: '8px', fontWeight: 'bold', color: '#065f46', marginTop: '10px' }}>{text.goBack}</button>
         </div>
       )}
     </div>

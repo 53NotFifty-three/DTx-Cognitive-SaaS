@@ -27,7 +27,7 @@ const translations = {
     doctorDesc: "Query AWS isolated multi-dimensional data\nView smart clinical reports",
     clickToEnter: "Click to Enter →",
     footer: "HIPAA-Compliant Architecture | Encrypted Data Pipeline",
-    langLabel: "🌐 Language / 语言"
+    langLabel: "🌐 Language"
   },
   ta: {
     exitPatient: "← நோயாளி முனையத்திலிருந்து வெளியேறு (வலைவாசல் திரும்பு)",
@@ -112,17 +112,30 @@ function App() {
   // Render Patient Portal
   if (currentRole === 'PATIENT') {
     return (
-      <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', padding: '20px', position: 'relative' }}>
+      <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', padding: '80px 20px 20px 20px', position: 'relative' }}>
         <LanguageSelector lang={lang} setLang={setLang} theme="light" />
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ width: '100%', margin: '0 auto' }}>
           {/* Safe exit button */}
-          <button 
+          <button
             onClick={() => setCurrentRole(null)}
-            style={{ marginBottom: '20px', padding: '8px 16px', cursor: 'pointer', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '6px', color: '#475569', fontWeight: 'bold', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              left: '20px',
+              zIndex: 10000,
+              padding: '8px 16px',
+              cursor: 'pointer',
+              background: '#fff',
+              border: '1px solid #cbd5e1',
+              borderRadius: '6px',
+              color: '#475569',
+              fontWeight: 'bold',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+            }}
           >
             {t.exitPatient}
           </button>
-          
+
           {/* Patient Test Cabin Component */}
           <CognitiveGame patientId="patient_001" lang={lang} />
         </div>
@@ -133,17 +146,30 @@ function App() {
   // Render Doctor Console
   if (currentRole === 'DOCTOR') {
     return (
-      <div style={{ backgroundColor: '#f1f5f9', minHeight: '100vh', padding: '20px', position: 'relative' }}>
+      <div style={{ backgroundColor: '#f1f5f9', minHeight: '100vh', padding: '80px 20px 20px 20px', position: 'relative' }}>
         <LanguageSelector lang={lang} setLang={setLang} theme="light" />
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ width: '100%', margin: '0 auto' }}>
           {/* Safe exit button */}
-          <button 
+          <button
             onClick={() => setCurrentRole(null)}
-            style={{ marginBottom: '20px', padding: '8px 16px', cursor: 'pointer', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '6px', color: '#475569', fontWeight: 'bold', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              left: '20px',
+              zIndex: 10000,
+              padding: '8px 16px',
+              cursor: 'pointer',
+              background: '#fff',
+              border: '1px solid #cbd5e1',
+              borderRadius: '6px',
+              color: '#475569',
+              fontWeight: 'bold',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+            }}
           >
             {t.exitDoctor}
           </button>
-          
+
           {/* Doctor Analytics Dashboard Component */}
           <DoctorDashboard patientId="patient_001" lang={lang} />
         </div>
@@ -155,16 +181,16 @@ function App() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0f172a', fontFamily: 'sans-serif', position: 'relative' }}>
       <LanguageSelector lang={lang} setLang={setLang} theme="dark" />
-      
+
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
         <h1 style={{ color: '#ffffff', fontSize: '36px', marginBottom: '10px', letterSpacing: '1px' }}>{t.title}</h1>
         <p style={{ color: '#94a3b8', fontSize: '16px', margin: 0 }}>{t.subtitle}</p>
       </div>
 
       <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
-        
+
         {/* Patient card */}
-        <div 
+        <div
           onClick={() => setCurrentRole('PATIENT')}
           style={{ width: '280px', background: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
           onMouseEnter={(e) => e.currentTarget.style.border = '1px solid #3b82f6'}
@@ -179,7 +205,7 @@ function App() {
         </div>
 
         {/* Doctor card */}
-        <div 
+        <div
           onClick={() => setCurrentRole('DOCTOR')}
           style={{ width: '280px', background: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
           onMouseEnter={(e) => e.currentTarget.style.border = '1px solid #10b981'}
