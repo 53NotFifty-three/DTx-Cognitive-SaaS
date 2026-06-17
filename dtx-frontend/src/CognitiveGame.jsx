@@ -139,9 +139,11 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
   const [patientReport, setPatientReport] = useState(null);
   const [loadingReport, setLoadingReport] = useState(false);
 
-  // 核心修改：动态患者绑定体系，取代曾经写死的 patientId 属性
   const [patientsList, setPatientsList] = useState([]);
   const [activePatientId, setActivePatientId] = useState("patient_001");
+  
+  // Resolve localized report values directly from translations payload to avoid network requests on language toggle
+  const currentReport = patientReport ? (patientReport.translations?.[lang] || patientReport) : null;
 
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0); 
   const [gameSequence, setGameSequence] = useState([]);           
@@ -193,7 +195,7 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
       fetch('http://localhost:8000/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ patient_id: activePatientId })
+        body: JSON.stringify({ patient_id: activePatientId, lang: lang })
       })
         .then(res => {
           if (!res.ok) throw new Error("Failed to fetch analysis");
@@ -602,23 +604,14 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
               <div style={{ fontSize: '13px', lineHeight: '1.6', color: '#374151' }}>
                 <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', padding: '12px', borderRadius: '8px', marginBottom: '15px' }}>
                   <strong style={{ color: '#166534' }}>📈 {lang === 'zh' ? '对比上次测试进展：' : 'Progress compared to last time: '}</strong>
-                  <span style={{ color: '#14532d' }}>{patientReport.comparison}</span>
+                  <span style={{ color: '#14532d' }}>{currentReport?.comparison}</span>
                 </div>
                 
                 <div style={{ marginBottom: '15px' }}>
                   <strong style={{ color: '#065f46' }}>📋 {lang === 'zh' ? '神经表现意见：' : 'Neurological Performance: '}</strong>
-                  <p style={{ margin: '4px 0 0 0', color: '#4b5563', fontStyle: 'italic' }}>"{patientReport.clinicianSummary}"</p>
+                  <p style={{ margin: '4px 0 0 0', color: '#4b5563', fontStyle: 'italic' }}>"{currentReport?.clinicianSummary}"</p>
                 </div>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px' }}>
-                  <strong style={{ color: '#065f46', marginTop: '5px' }}>💡 {lang === 'zh' ? '推荐训练计划：' : 'Prescribed Exercises: '}</strong>
-                  {patientReport.therapeuticExercises?.map((ex, idx) => (
-                    <div key={idx} style={{ background: '#f9fafb', border: '1px solid #e5e7eb', padding: '10px', borderRadius: '8px' }}>
-                      <div style={{ fontWeight: 'bold', color: '#1f2937' }}>{ex.title} ({ex.frequency})</div>
-                      <div style={{ color: '#6b7280', fontSize: '11px', marginTop: '2px' }}>{ex.description}</div>
-                    </div>
-                  ))}
-                </div>
               </div>
             ) : (
               <div style={{ color: '#dc2626', fontSize: '13px' }}>

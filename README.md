@@ -29,7 +29,9 @@ It splits into two strictly isolated portals (RBAC):
     * *Severe:* Tolerant stimulus window (`2500ms`), slower pacing intervals (`2000 - 6000ms`) to reduce cognitive overload, and strict error limit (`3`) to avoid database pollution from severely distracted actions.
 * **Clinical-Grade Data Safety & Batch Synchronization:** Logs are cached locally in the patient terminal and uploaded in a single transaction via `POST /api/logs` to prevent concurrency connection storms and database locks.
 * **Asynchronous Race Condition Isolation:** Async state updates on the doctor dashboard are protected using the `active` cleanup hook pattern, preventing stale API responses from corrupting active visualizations.
-* **AI Medical Copilot with Comparative Progress Trends:** Dynamically compares the earliest and latest sequence segments (Reaction Time change `rtTrend` and Accuracy change `accTrend`) to render structural insights on neurofeedback efficacy and cognitive fatigue.
+* **AI Medical Copilot & Patient Analyzer Agent:** Integrates the Gemini API (`gemini-3.1-flash-lite`) to generate clinical diagnostic summaries, prioritize recommended training modalities, and map target cognitive domains.
+* **Adaptive Calibration Controller:** Based on patient performance history and logs, the AI dynamically calibrates next-session parameters (stimulus duration, intervals, game sequence, and error thresholds) to maintain optimal cognitive load.
+* **Single-Request Multilingual Caching:** Generates full clinical reports for all four languages in a single LLM request. Caches reports locally in AWS databases using composite primary keys `(patient_id, lang)` to support zero-network language toggles on the frontend and minimize API latency.
 * **4-Language Localization & Global Selector:** Supports Chinese (zh), English (en), Tamil (ta), and Malay (ms) instantly via an absolute-positioned glassmorphism dropdown language selector situated at the top-right corner of all portals.
 
 ## 🏗️ Architecture & AWS Integration

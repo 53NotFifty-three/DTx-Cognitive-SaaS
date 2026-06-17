@@ -104,9 +104,6 @@ const translations = {
     reportSectionRecommendation: "🎯 优先推荐训练模态",
     reportSectionReasoning: "🔬 临床推荐依据与病理分析",
     reportSectionDomains: "🧠 认知本能域干预靶点 (Domain Focus)",
-    reportSectionExercises: "💊 数字疗法干预处方 (Prescribed Exercises)",
-    reportSectionLifestyle: "🥗 临床生活习惯协同方案 (Lifestyle Protocols)",
-    reportSectionOutlook: "🔮 预后与康复展望 (Prognosis Outlook)",
     reportDomainInhibition: "行为抑制系统 (Behavioral Inhibition - Classic)",
     reportDomainFlexibility: "认知灵活性 (Cognitive Flexibility - Incongruent)",
     reportDomainProcessing: "信息处理速度与精细控制 (Processing Speed - Shape Count)",
@@ -214,9 +211,6 @@ const translations = {
     reportSectionRecommendation: "🎯 Recommended Priority Training",
     reportSectionReasoning: "🔬 Clinical Recommendation & Rationale",
     reportSectionDomains: "🧠 Targeted Cognitive Domains (Domain Focus)",
-    reportSectionExercises: "💊 Prescribed Digital Therapeutics (Prescribed Exercises)",
-    reportSectionLifestyle: "🥗 Synergistic Lifestyle Protocols",
-    reportSectionOutlook: "🔮 Prognosis & Recovery Outlook",
     reportDomainInhibition: "Behavioral Inhibition System (Classic)",
     reportDomainFlexibility: "Cognitive Flexibility (Incongruent)",
     reportDomainProcessing: "Processing Speed & Fine Control (Shape Count)",
@@ -324,9 +318,6 @@ const translations = {
     reportSectionRecommendation: "🎯 பரிந்துரைக்கப்படும் முன்னுரிமை பயிற்சி",
     reportSectionReasoning: "🔬 மருத்துவ பரிந்துரை மற்றும் பகுத்தறிவு",
     reportSectionDomains: "🧠 இலக்கு அறிவாற்றல் களங்கள் (Domain Focus)",
-    reportSectionExercises: "💊 பரிந்துரைக்கப்படும் டிஜிட்டல் சிகிச்சை முறைகள்",
-    reportSectionLifestyle: "🥗 வாழ்க்கை முறை வழிகாட்டுதல்கள்",
-    reportSectionOutlook: "🔮 முன்கணிப்பு மற்றும் மீட்பு அவுட்லுக்",
     reportDomainInhibition: "நடத்தை தடுப்பு அமைப்பு (Classic)",
     reportDomainFlexibility: "அறிவாற்றல் நெகிழ்வுத்தன்மை (Incongruent)",
     reportDomainProcessing: "செயலாக்க வேகம் மற்றும் கட்டுப்பாடு (Shape Count)",
@@ -434,9 +425,6 @@ const translations = {
     reportSectionRecommendation: "🎯 Cadangan Latihan Keutamaan",
     reportSectionReasoning: "🔬 Rationale & Rekomendasi Klinikal",
     reportSectionDomains: "🧠 Domain Kognitif Sasaran (Fokus Domain)",
-    reportSectionExercises: "💊 Terapi Digital Preskripsi (Latihan Ditetapkan)",
-    reportSectionLifestyle: "🥗 Protokol Gaya Hidup Sinergi",
-    reportSectionOutlook: "🔮 Prospek Prognosis & Pemulihan",
     reportDomainInhibition: "Sistem Perencatan Tingkah Laku (Classic)",
     reportDomainFlexibility: "Fleksibiliti Kognitif (Incongruent)",
     reportDomainProcessing: "Kelajuan Pemprosesan & Kawalan Halus (Shape Count)",
@@ -472,6 +460,9 @@ function DoctorDashboard({ lang = 'zh' }) {
   const [aiError, setAiError] = useState(null);
 
   const t = translations[lang] || translations.zh;
+  
+  // Resolve localized report values directly from translations payload to avoid network requests on language toggle
+  const currentReport = aiReport ? (aiReport.translations?.[lang] || aiReport) : null;
 
   const getGenderText = (gender) => {
     if (gender === '男' || gender === 'Male' || gender === 'Lelaki' || gender === 'ஆண்') {
@@ -1033,15 +1024,6 @@ function DoctorDashboard({ lang = 'zh' }) {
     ];
   };
 
-  const getLocalizedOutlook = () => {
-    return {
-      zh: "🔮 在持续遵循自适应数字训练和睡眠调理方案的前提下，预计患者的前额叶执行控制网络将在 4 到 6 周内表现出显著的突触可塑性改善与反应稳定性增强。",
-      en: "🔮 With consistent adherence to the adaptive titration protocol and sleep hygiene recommendations, the patient's prefrontal executive control networks are expected to show significant plastic remodeling and stability within 4-6 weeks.",
-      ta: "🔮 தகவமைப்பு நெறிமுறை மற்றும் தூக்க சுகாதார பரிந்துரைகளை தொடர்ந்து கடைப்பிடிப்பதன் மூலம், நோயாளியின் முன்நெற்றி கட்டுப்பாட்டு வலையமைப்புகள் 4-6 வாரங்களுக்குள் குறிப்பிடத்தக்க புனரமைப்பு மற்றும் ஸ்திரத்தன்மையைக் காட்டும் என்று எதிர்பார்க்கப்படுகிறது.",
-      ms: "🔮 Dengan pematuhan konsisten kepada protokol titrasi penyesuaian dan cadangan kebersihan tidur, rangkaian kawalan eksekutif prefrontal pesakit dijangka menunjukkan pembentukan semula plastik dan kestabilan yang ketara dalam tempoh 4-6 minggu."
-    }[lang];
-  };
-
   const getWorstDomainLocalized = (bestTraining) => {
     if (bestTraining?.includes("Color Go/No-Go")) {
       return {
@@ -1300,14 +1282,18 @@ function DoctorDashboard({ lang = 'zh' }) {
                   {/* Summary */}
                   <div style={{ fontSize: '13.5px', lineHeight: '1.7', color: '#334155', background: '#f8fafc', padding: '16px', borderRadius: '10px', borderLeft: '4px solid #cbd5e1', marginBottom: '20px' }}>
                     <h5 style={{ margin: '0 0 8px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionSummary}</h5>
-                    {getLocalizedSummary(aiReport.stats, getLocalizedBestTraining(aiReport.bestTraining), getWorstDomainLocalized(aiReport.bestTraining))}
+                    {currentReport.clinicianSummary ? (
+                      <div style={{ whiteSpace: 'pre-line' }}>{currentReport.clinicianSummary}</div>
+                    ) : (
+                      getLocalizedSummary(aiReport.stats, getLocalizedBestTraining(currentReport.bestTraining), getWorstDomainLocalized(currentReport.bestTraining))
+                    )}
                   </div>
 
                   {/* Priority Recommendation */}
                   {(() => {
-                    const bestTrainingText = getLocalizedBestTraining(aiReport.bestTraining);
-                    const isClassic = aiReport.bestTraining?.includes("Color Go/No-Go");
-                    const isIncongruent = aiReport.bestTraining?.includes("Cognitive Flexibility");
+                    const bestTrainingText = getLocalizedBestTraining(currentReport.bestTraining);
+                    const isClassic = currentReport.bestTraining?.includes("Color Go/No-Go");
+                    const isIncongruent = currentReport.bestTraining?.includes("Cognitive Flexibility");
                     const accentColor = isClassic ? '#2563eb' : (isIncongruent ? '#d97706' : '#10b981');
                     const accentBg = isClassic ? '#f0f7ff' : (isIncongruent ? '#fffbeb' : '#f0fdf4');
                     const accentBorder = isClassic ? '#dbeafe' : (isIncongruent ? '#fef3c7' : '#dcfce7');
@@ -1318,7 +1304,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                           {t.reportSectionRecommendation}: <span style={{ color: accentColor }}>{bestTrainingText}</span>
                         </h5>
                         <p style={{ margin: 0, fontSize: '13px', color: '#334155', lineHeight: '1.6' }}>
-                          <strong>{t.reportSectionReasoning}:</strong> {getLocalizedReasoning(aiReport.bestTraining, aiReport.stats)}
+                          <strong>{t.reportSectionReasoning}:</strong> {currentReport.bestTrainingReason || getLocalizedReasoning(currentReport.bestTraining, aiReport.stats)}
                         </p>
                       </div>
                     );
@@ -1327,53 +1313,25 @@ function DoctorDashboard({ lang = 'zh' }) {
                   {/* Domain Focus */}
                   <h5 style={{ margin: '24px 0 12px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionDomains}</h5>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '15px', marginBottom: '20px' }}>
-                    {getLocalizedDomainFocus(aiReport.stats).map((dom, idx) => (
-                      <div key={idx} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', borderLeft: `4px solid ${dom.color}`, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <div>
-                          <div style={{ color: '#0f172a', fontSize: '13px', fontWeight: 'bold', marginBottom: '6px' }}>{dom.name}</div>
-                          <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}>{dom.explanation}</p>
+                    {(currentReport.domainFocus || getLocalizedDomainFocus(aiReport.stats)).map((dom, idx) => {
+                      let col = dom.color || '#8b5cf6';
+                      if (!dom.color) {
+                        const lowerName = (dom.name || "").toLowerCase();
+                        if (lowerName.includes("inhibition") || lowerName.includes("classic") || lowerName.includes("颜色") || lowerName.includes("warna") || lowerName.includes("தடுப்பு")) col = '#3b82f6';
+                        else if (lowerName.includes("flexibility") || lowerName.includes("incongruent") || lowerName.includes("冲突") || lowerName.includes("songsang") || lowerName.includes("நெகிழ்வுத்தன்மை")) col = '#f59e0b';
+                        else if (lowerName.includes("speed") || lowerName.includes("shape") || lowerName.includes("数量") || lowerName.includes("kuantiti") || lowerName.includes("வேகம்")) col = '#10b981';
+                      }
+                      return (
+                        <div key={idx} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', borderLeft: `4px solid ${col}`, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                          <div>
+                            <div style={{ color: '#0f172a', fontSize: '13px', fontWeight: 'bold', marginBottom: '6px' }}>{dom.name}</div>
+                            <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}>{dom.explanation}</p>
+                          </div>
+                          <div style={{ fontSize: '11px', color: col, fontWeight: 'bold', background: '#fff', border: `1px solid ${col}33`, padding: '5px 10px', borderRadius: '6px', display: 'inline-block', alignSelf: 'flex-start' }}>🎯 {dom.target}</div>
                         </div>
-                        <div style={{ fontSize: '11px', color: dom.color, fontWeight: 'bold', background: '#fff', border: `1px solid ${dom.color}33`, padding: '5px 10px', borderRadius: '6px', display: 'inline-block', alignSelf: 'flex-start' }}>🎯 {dom.target}</div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
-
-                  {/* Prescribed Exercises */}
-                  <h5 style={{ margin: '24px 0 12px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionExercises}</h5>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '15px', marginBottom: '20px' }}>
-                    {getLocalizedExercises().map((ex, idx) => (
-                      <div key={idx} style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <div>
-                          <div style={{ color: '#0f172a', fontSize: '13px', fontWeight: 'bold', marginBottom: '4px' }}>{ex.title}</div>
-                          <div style={{ fontSize: '11px', color: '#2563eb', fontWeight: 'bold', marginBottom: '10px' }}>⏰ {ex.frequency}</div>
-                          <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}>{ex.description}</p>
-                        </div>
-                        <div style={{ margin: 0, fontSize: '11px', color: '#64748b', fontStyle: 'italic', background: '#f8fafc', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #cbd5e1' }}>
-                          <strong>Clinical Rationale:</strong> {ex.rationale}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Lifestyle Protocols */}
-                  <h5 style={{ margin: '24px 0 12px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionLifestyle}</h5>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '15px', marginBottom: '20px' }}>
-                    {getLocalizedLifestyle().map((life, idx) => (
-                      <div key={idx} style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <div>
-                          <div style={{ color: '#0f172a', fontSize: '13.5px', fontWeight: 'bold', marginBottom: '8px' }}>{life.category}</div>
-                          <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#475569', lineHeight: '1.5' }}><strong>Action:</strong> {life.action}</p>
-                        </div>
-                        <div style={{ margin: 0, fontSize: '11px', color: '#64748b', fontStyle: 'italic', background: '#f8fafc', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #cbd5e1' }}>
-                          <strong>Rationale:</strong> {life.rationale}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Prognosis */}
-                  <h5 style={{ margin: '24px 0 8px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionOutlook}</h5>
-                  <p style={{ margin: 0, fontSize: '12.5px', color: '#475569', lineHeight: '1.6', background: '#f5f3ff', padding: '14px 18px', borderRadius: '10px', borderLeft: '4px solid #8b5cf6' }}>{getLocalizedOutlook()}</p>
                 </div>
               )}
             </div>
