@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 const translations = {
   zh: {
     dashboardTitle: "📊 医生端：认知数据高纯度过滤控制台",
@@ -490,7 +492,7 @@ function DoctorDashboard({ lang = 'zh' }) {
 
   // 1. 获取全量患者 ID 库
   const refreshPatientsList = (defaultId = null) => {
-    fetch('http://localhost:8000/api/patients')
+    fetch(`${API_BASE}/api/patients`)
       .then(res => res.json())
       .then(list => {
         setPatientsList(list);
@@ -517,7 +519,7 @@ function DoctorDashboard({ lang = 'zh' }) {
       return;
     }
     setLoading(true);
-    fetch(`http://localhost:8000/api/patients/${currentPatientId}/stats`)
+    fetch(`${API_BASE}/api/patients/${currentPatientId}/stats`)
       .then(res => res.json())
       .then(fetchedData => {
         if (active) {
@@ -545,7 +547,7 @@ function DoctorDashboard({ lang = 'zh' }) {
       setPatientProfile(null);
       return;
     }
-    fetch(`http://localhost:8000/api/patients/${currentPatientId}/ai-config`)
+    fetch(`${API_BASE}/api/patients/${currentPatientId}/ai-config`)
       .then(res => res.json())
       .then(profile => {
         if (active) {
@@ -572,7 +574,7 @@ function DoctorDashboard({ lang = 'zh' }) {
     }
     setLoadingAI(true);
     setAiError(null);
-    fetch('http://localhost:8000/api/analyze', {
+    fetch(`${API_BASE}/api/analyze`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ patient_id: currentPatientId })
@@ -703,7 +705,7 @@ function DoctorDashboard({ lang = 'zh' }) {
       return;
     }
 
-    fetch('http://localhost:8000/api/patients', {
+    fetch(`${API_BASE}/api/patients`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(createFormData)
@@ -734,7 +736,7 @@ function DoctorDashboard({ lang = 'zh' }) {
     const isConfirmed = window.confirm(t.alertConfirmDelete(currentPatientId));
     if (!isConfirmed) return;
 
-    fetch(`http://localhost:8000/api/patients/${currentPatientId}`, {
+    fetch(`${API_BASE}/api/patients/${currentPatientId}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
