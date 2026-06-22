@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 const TRIALS_PER_GAME = 20;
 
 const translations = {
@@ -171,7 +172,7 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
 
   // 挂载时加载动态患者名录
   useEffect(() => {
-    fetch('http://localhost:8000/api/patients')
+    fetch(`${API_BASE}/api/patients`)
       .then(res => res.json())
       .then(list => {
         setPatientsList(list);
@@ -192,7 +193,7 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
   useEffect(() => {
     if (gameState === 'FINISHED') {
       setLoadingReport(true);
-      fetch('http://localhost:8000/api/analyze', {
+      fetch(`${API_BASE}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ patient_id: activePatientId, lang: lang })
@@ -218,7 +219,7 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
     if (timerRef.current) clearTimeout(timerRef.current);
     if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
     
-    fetch(`http://localhost:8000/api/patients/${activePatientId}/ai-config`)
+    fetch(`${API_BASE}/api/patients/${activePatientId}/ai-config`)
       .then(res => res.json())
       .then(config => {
         setSeverityInfo(config.severity);
@@ -426,7 +427,7 @@ function CognitiveGame({ onGameComplete, lang = 'zh' }) {
   const endWholeSet = () => {
     setGameState('FINISHED');
     // 使用新增的批量上传接口，避免对 AWS 数据库集群引发高并发连接池消耗
-    fetch('http://localhost:8000/api/logs', {
+    fetch(`${API_BASE}/api/logs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(allTrialLogs.current)

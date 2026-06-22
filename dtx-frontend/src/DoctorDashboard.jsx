@@ -62,7 +62,7 @@ const translations = {
     alertConfirmDelete: (id) => `致命警告：您正在对患者 [${id}] 执行销毁指令。\n此操作将永久注销该病历并强行清空 AWS 数据集群内对应的所有测试轨迹，不可逆！`,
     alertDeleteFailed: "注销失败: ",
     alertSeverityRequired: "请选择严重程度分级！",
-    
+
     // Insights details
     reportNeuroLabel: "神经学表现分析",
     reportTrendLabel: "治疗成果趋势评估",
@@ -70,30 +70,30 @@ const translations = {
     insightNeuroClassicGood: "患者前额叶执行功能中的行为抑制系统（Behavioral Inhibition System）运作稳定，基础色觉通道中枢决策延迟处于正常医学阈值内。",
     insightNeuroClassicBad: "数据提示突发性认知负荷超载。患者在基础持续性注意力（Sustained Attention）维持上表现出波动，存在一定的冲动性误触倾向。",
     insightPresClassic: "维持当前自适应 AI 滴定基线。建议在下一周期疗程中将该模块的初始刺激时长压缩 50ms，挑战前额叶主动专注极限。",
-    
+
     insightNeuroIncongruentGood: "患者在反直觉冲突干扰下表现出良好的认知灵活性（Cognitive Flexibility），高级执行功能对肌肉本能抑制的切换效率达标。",
     insightNeuroIncongruentBad: (time) => `患者对逆向冲突规则的神经逻辑处理延迟明显拉长（平均达 ${time} ms），表明前额叶皮层在切断第一本能映射、执行相反逻辑时存在认知重构瓶颈。`,
     insightPresIncongruent: "建议将每日处方中的逆向冲突模块执行顺序置于首位，在患者大脑多巴胺分泌最旺盛的活跃期进行针对性变频压迫训练。",
-    
+
     insightNeuroShapeGood: "患者在形态与数量精细辨识任务中对潜在诱惑的辨识阈值发育完全，视觉拥挤效应（Visual Crowding）对其行为抑制阻碍极低。",
     insightNeuroShapeBad: "患者在面对相同颜色、不同数量的刺激物时错误率激增。表明其在大脑快速决策时，无法有效分配视觉空间工作记忆资源，精细控制力存在阶段性局限。",
     insightPresShape: "建议在自适应滴定中动态提升该形态测试出现的频率，通过高频无障碍盲操纠正多动表现下的空间识别偏差。",
-    
+
     insightTrendNone: "由于当前有效样本序列不足，暂无法生成治疗趋势对比。请在继续测试积累数据后查看。",
     insightTrendSummary: (rtText, accText, statusText) => `较测试初始阶段，患者的${rtText}，且${accText}。综合趋势表明，当前数字疗法对患者前额叶执行功能的激活与重构[${statusText}]。`,
-    
+
     rtTrendDecreased: (val) => `核心反应速度缩短了 ${val} ms（表现出显著的大脑中枢处理灵敏度改善与突触传导效率提升）`,
     rtTrendIncreased: (val) => `核心反应速度延长了 ${val} ms（提示随着测试周期推进，前额叶皮层在持续性认知负荷下存在资源消耗与注意力疲劳倾向）`,
     rtTrendStable: "反应速度维持稳定（表现出高度的自适应中枢稳定性）",
-    
+
     accTrendIncreased: (val) => `正确率提升了 ${val}%（表明患者通过行为神经反馈调节，主动学习并强化了执行抑制机制）`,
     accTrendDecreased: (val) => `正确率衰退了 ${val}%（反映了冲动控制能力衰减与漏点脱靶概率上升）`,
     accTrendStable: "正确率持平（控制力稳定在基准水平）",
-    
+
     statusSignificant: "成果显著",
     statusModerate: "效果温和",
     statusFluctuating: "处于波动调整期",
-    
+
     // AI Report Localizations
     reportTitle: "🧠 AI 临床会诊综合报告",
     reportCopilot: "智能临床助手",
@@ -169,7 +169,7 @@ const translations = {
     alertConfirmDelete: (id) => `CRITICAL WARNING: You are executing a destruction command for patient [${id}].\nThis will permanently delete the profile and clear all test trajectories in the AWS database cluster. This action is irreversible!`,
     alertDeleteFailed: "Deletion failed: ",
     alertSeverityRequired: "Please select a Severity Level!",
-    
+
     // Insights details
     reportNeuroLabel: "Neurological Performance Analysis",
     reportTrendLabel: "Treatment Outcome Trend Evaluation",
@@ -177,30 +177,30 @@ const translations = {
     insightNeuroClassicGood: "The patient's Behavioral Inhibition System in prefrontal executive control functions is stable. The central decision latency for basic color pathways is within the normal clinical threshold.",
     insightNeuroClassicBad: "Data suggests sudden cognitive overload. The patient shows fluctuations in maintaining Sustained Attention, with a tendency toward impulsive touches.",
     insightPresClassic: "Maintain the current adaptive AI titration baseline. It is recommended to compress the initial stimulus duration of this module by 50ms in the next cycle to challenge the prefrontal focus limit.",
-    
+
     insightNeuroIncongruentGood: "The patient demonstrates good Cognitive Flexibility under counter-intuitive conflict interference, showing standard efficiency in prefrontal switching over muscle instincts.",
     insightNeuroIncongruentBad: (time) => `The patient's neural processing latency for reverse conflict rules is significantly prolonged (averaging ${time} ms), indicating a cognitive restructuring bottleneck when the prefrontal cortex overrides the primary instinct mapping to execute opposite logic.`,
     insightPresIncongruent: "It is recommended to prioritize the reverse conflict module at the beginning of the daily prescription, performing target-frequency training during the patient's peak dopamine secretion period.",
-    
+
     insightNeuroShapeGood: "The patient's discrimination threshold for potential distractors in fine shape-and-quantity discrimination tasks is fully developed, showing minimal visual crowding interference in response inhibition.",
     insightNeuroShapeBad: "The patient's error rate spikes when facing visual stimuli with the same color but different quantities. This indicates an inability to allocate visuospatial working memory resources effectively during rapid decision-making, showing limitations in fine motor control.",
     insightPresShape: "It is recommended to dynamically increase the frequency of this subitizing task in the adaptive titration, using high-frequency error-free training to correct spatial recognition biases associated with hyperactive behaviors.",
-    
+
     insightTrendNone: "Insufficient sample sequences to generate a treatment trend comparison. Please compile more testing data.",
     insightTrendSummary: (rtText, accText, statusText) => `Compared with the initial stage, the patient's ${rtText}, and ${accText}. The overall trend indicates that the current digital therapeutics has achieved [${statusText}] in activating and reconstructing the patient's prefrontal executive functions.`,
-    
+
     rtTrendDecreased: (val) => `core response time decreased by ${val} ms (showing significant improvement in central processing sensitivity and synaptic transmission efficiency)`,
     rtTrendIncreased: (val) => `core response time increased by ${val} ms (suggesting resource depletion and attention fatigue in the prefrontal cortex under sustained cognitive load as sessions progress)`,
     rtTrendStable: "response time remained stable (showing a high degree of adaptive central stability)",
-    
+
     accTrendIncreased: (val) => `accuracy increased by ${val}% (indicating that the patient actively learned and strengthened executive inhibition mechanisms through behavioral neurofeedback regulation)`,
     accTrendDecreased: (val) => `accuracy decreased by ${val}% (reflecting a decline in impulse control and an increased rate of omissions)`,
     accTrendStable: "accuracy remained flat (impulse control stabilized at the baseline level)",
-    
+
     statusSignificant: "significant outcomes",
     statusModerate: "moderate effects",
     statusFluctuating: "a fluctuating adjustment phase",
-    
+
     // AI Report Localizations
     reportTitle: "🧠 AI Clinical Consultation Report",
     reportCopilot: "Medical Copilot",
@@ -276,7 +276,7 @@ const translations = {
     alertConfirmDelete: (id) => `தீவிர எச்சரிக்கை: நோயாளிக்கு [${id}] அழிப்பு கட்டளையை இயக்குகிறீர்கள்.\nஇது சுயவிவரத்தை நிரந்தரமாக நீக்கி, AWS தரவுத்தளத்தில் உள்ள அனைத்து சோதனைத் தடங்களையும் அழிக்கும். இந்த நடவடிக்கை மாற்ற முடியாதது!`,
     alertDeleteFailed: "நீக்கம் தோல்வியடைந்தது: ",
     alertSeverityRequired: "தயவுசெய்து தீவிர நிலையைத் தேர்ந்தெடுக்கவும்!",
-    
+
     // Insights details
     reportNeuroLabel: "நரம்பியல் செயல்திறன் பகுப்பாய்வு",
     reportTrendLabel: "சிகிச்சை போக்கு ஒப்பீடு",
@@ -284,30 +284,30 @@ const translations = {
     insightNeuroClassicGood: "நோயாளிக்கு முன்நெற்றிக் கட்டுப்பாட்டு செயல்பாடுகளில் உள்ள நடத்தை தடுப்பு அமைப்பு நிலையாக இயங்குகிறது. அடிப்படை வண்ண செயலாக்கத்தின் முடிவெடுக்கும் தாமதம் சாதாரண வரம்பிற்குள் உள்ளது.",
     insightNeuroClassicBad: "தரவு திடீர் அறிவாற்றல் சுமையைக் குறிக்கிறது. நோயாளி தொடர்ச்சியான கவனத்தை பராமரிப்பதில் ஏற்ற இறக்கங்களைக் காட்டுகிறார், மேலும் சில அவசர தொடுதல்களை மேற்கொள்கிறார்.",
     insightPresClassic: "தற்போதைய தகவமைப்பு AI அளவை பராமரிக்கவும். அடுத்த சுழற்சியில் இந்த தொகுதியின் ஆரம்ப தூண்டுதல் கால அளவை 50ms குறைக்க பரிந்துரைக்கப்படுகிறது.",
-    
+
     insightNeuroIncongruentGood: "நோயாளி எதிர்-உள்ளுணர்வு மோதல் குறுக்கீட்டின் கீழ் நல்ல அறிவாற்றல் நெகிழ்வுத்தன்மையைக் காட்டுகிறார், தசை உள்ளுணர்வுகளைத் தடுப்பதில் நிலையான செயல்திறனை வெளிப்படுத்துகிறார்.",
     insightNeuroIncongruentBad: (time) => `தலைகீழ் மோதல் விதிகளுக்கான நோயாளியின் நரம்பியல் செயலாக்க தாமதம் கணிசமாக நீட்டிக்கப்பட்டுள்ளது (சராசரியாக ${time} ms), இது முன்நெற்றி புறணி மாற்று தர்க்கத்தை செயல்படுத்துவதில் உள்ள சிக்கலை காட்டுகிறது.`,
     insightPresIncongruent: "தினசரி பரிந்துரையின் தொடக்கத்தில் தலைகீழ் மோதல் தொகுதியை முதன்மைப்படுத்த பரிந்துரைக்கப்படுகிறது, நோயாளியின் உச்ச டோபமைன் சுரப்பு காலத்தில் பயிற்சி அளிக்கப்பட வேண்டும்.",
-    
+
     insightNeuroShapeGood: "நுண்ணிய வடிவம் மற்றும் அளவு கண்டறிதல் பணிகளில் சாத்தியமான திசைதிருப்பல்களுக்கான நோயாளியின் பாகுபாடு வரம்பு முழுமையாக உருவாக்கப்பட்டுள்ளது, இது குறைந்தபட்ச காட்சி குறுக்கீட்டைக் காட்டுகிறது.",
     insightNeuroShapeBad: "ஒரே வண்ணம் ஆனால் வெவ்வேறு அளவுள்ள தூண்டுதல்களை எதிர்கொள்ளும்போது நோயாளியின் பிழை விகிதம் அதிகரிக்கிறது. இது விரைவான முடிவெடுக்கும் போது காட்சி-இடஞ்சார்ந்த நினைவக வளங்களை திறம்பட ஒதுக்க இயலாமையைக் குறிக்கிறது.",
     insightPresShape: "தகவமைப்பு மதிப்பீட்டில் இந்த சோதனையின் அதிர்வெண்ணை மாறும் வகையில் அதிகரிக்க பரிந்துரைக்கப்படுகிறது, இது அதிவேக பிழையற்ற பயிற்சி மூலம் இடஞ்சார்ந்த அங்கீகார பிழைகளை சரிசெய்ய உதவும்.",
-    
+
     insightTrendNone: "சிகிச்சை போக்கு ஒப்பீட்டை உருவாக்க போதுமான மாதிரி வரிசைகள் இல்லை. தயவுசெய்து கூடுதல் சோதனை தரவுகளை சேகரிக்கவும்.",
     insightTrendSummary: (rtText, accText, statusText) => `சோதனையின் ஆரம்ப கட்டத்துடன் ஒப்பிடும்போது, நோயாளியின் ${rtText}, மற்றும் ${accText}. ஒட்டுமொத்த போக்கு தற்போதைய டிஜிட்டல் சிகிச்சை நோயாளியின் முன்நெற்றி செயல்பாடுகளை செயல்படுத்துவதில் [${statusText}] அடைந்துள்ளது என்பதைக் காட்டுகிறது.`,
-    
+
     rtTrendDecreased: (val) => `சராசரி எதிர்வினை நேரம் ${val} ms குறைந்துள்ளது (செயலாக்க உணர்திறன் மற்றும் சினாப்டிக் கடத்துதல் செயல்திறனில் குறிப்பிடத்தக்க முன்னேற்றத்தைக் காட்டுகிறது)`,
     rtTrendIncreased: (val) => `சராசரி எதிர்வினை நேரம் ${val} ms அதிகரித்துள்ளது (தொடர்ச்சியான அறிவாற்றல் சுமையின் கீழ் முன்நெற்றி புறணி சோர்வடைவதை குறிக்கிறது)`,
     rtTrendStable: "எதிர்வினை நேரம் நிலையாக உள்ளது (உயர்ந்த தகவமைப்பு நிலைத்தன்மையைக் காட்டுகிறது)",
-    
+
     accTrendIncreased: (val) => `துல்லியம் ${val}% அதிகரித்துள்ளது (நடத்தை நரம்பியல் பின்னூட்ட ஒழுங்குமுறை மூலம் நோயாளி செயல்களைத் தடுக்கும் வழிமுறைகளைக் கற்று வலுப்படுத்தியுள்ளார் என்பதைக் காட்டுகிறது)`,
     accTrendDecreased: (val) => `துல்லியம் ${val}% குறைந்துள்ளது (தடுப்பு கட்டுப்பாட்டில் குறைவு மற்றும் பிழைகள் அதிகரிப்பதை பிரதிபலிக்கிறது)`,
     accTrendStable: "துல்லியம் மாறாமல் உள்ளது (அடிப்படை மட்டத்தில் கட்டுப்பாடு நிலையானது)",
-    
+
     statusSignificant: "குறிப்பிடத்தக்க முடிவுகள்",
     statusModerate: "மிதமான விளைவுகள்",
     statusFluctuating: "மாற்றங்களுக்கு உட்பட்ட கட்டம்",
-    
+
     // AI Report Localizations
     reportTitle: "🧠 செயற்கை நுண்ணறிவு மருத்துவ ஆலோசனை அறிக்கை",
     reportCopilot: "Medical Copilot",
@@ -383,7 +383,7 @@ const translations = {
     alertConfirmDelete: (id) => `AMARAN KRITIKAL: Anda sedang melaksanakan arahan pemusnahan untuk pesakit [${id}].\nTindakan ini akan memadamkan rekod profil secara kekal dan mengosongkan semua trajektori siri ujian dalam kluster pangkalan data AWS. Tindakan ini tidak boleh diubah!`,
     alertDeleteFailed: "Pemadaman gagal: ",
     alertSeverityRequired: "Sila pilih tahap keterukan!",
-    
+
     // Insights details
     reportNeuroLabel: "Analisis Prestasi Neurologikal",
     reportTrendLabel: "Penilaian Trend Rawatan",
@@ -391,30 +391,30 @@ const translations = {
     insightNeuroClassicGood: "Sistem Perencatan Tingkah Laku (Behavioral Inhibition System) dalam fungsi kawalan eksekutif prefrontal pesakit adalah stabil, kelewatan keputusan pusat berada dalam ambang perubatan normal.",
     insightNeuroClassicBad: "Data menunjukkan beban kognitif berlebihan secara tiba-tiba. Pesakit menunjukkan turun naik dalam mengekalkan Perhatian Berterusan (Sustained Attention), terdapat kecenderungan sentuhan impulsif.",
     insightPresClassic: "Kekalkan garis dasar titrasi AI penyesuaian semasa. Disyorkan untuk memampatkan tempoh rangsangan awal modul ini sebanyak 50ms dalam kitaran seterusnya untuk mencabar had fokus prefrontal.",
-    
+
     insightNeuroIncongruentGood: "Pesakit menunjukkan fleksibiliti kognitif (Cognitive Flexibility) yang baik di bawah gangguan konflik kontra-intuisi, menunjukkan kecekapan penukaran eksekutif yang standard ke atas refleks otot.",
     insightNeuroIncongruentBad: (time) => `Kelewatan pemprosesan neural pesakit untuk peraturan konflik songsang dipanjangkan dengan ketara (purata ${time} ms), menunjukkan sekatan pembinaan semula kognitif apabila korteks prefrontal mengatasi pemetaan refleks primer untuk melaksanakan logik bertentangan.`,
     insightPresIncongruent: "Disyorkan untuk mengutamakan modul konflik songsang pada permulaan preskripsi harian, melakukan latihan kekerapan sasaran semasa tempoh rembesan dopamin puncak pesakit.",
-    
+
     insightNeuroShapeGood: "Ambang diskriminasi pesakit untuk potensi gangguan dalam tugas diskriminasi bentuk-dan-kuantiti halus berkembang sepenuhnya, menunjukkan gangguan kesesakan visual (Visual Crowding) yang minimum dalam perencatan tindak balas.",
     insightNeuroShapeBad: "Kadar ralat pesakit meningkat apabila menghadapi rangsangan warna yang sama tetapi kuantiti yang berbeza. Ini menunjukkan ketidakupayaan untuk memperuntukkan sumber memori kerja ruang visual secara berkesan semasa membuat keputusan cepat, menunjukkan had kawalan motor halus.",
     insightPresShape: "Disyorkan untuk meningkatkan kekerapan tugas subitizing bentuk ini dalam titrasi penyesuaian, menggunakan latihan bebas ralat frekuensi tinggi untuk membetulkan sisihan pengiktirafan ruang berkaitan tingkah laku hiperaktif.",
-    
+
     insightTrendNone: "Kekurangan sampel jujukan yang sah untuk menjana perbandingan trend rawatan. Sila kumpulkan lebih banyak data ujian.",
     insightTrendSummary: (rtText, accText, statusText) => `Berbanding dengan peringkat awal ujian, ${rtText} pesakit, dan ${accText}. Trend keseluruhan menunjukkan bahawa terapi digital semasa telah mencapai [${statusText}] dalam mengaktifkan dan membina semula fungsi eksekutif prefrontal pesakit.`,
-    
+
     rtTrendDecreased: (val) => `kelajuan tindak balas teras dikurangkan sebanyak ${val} ms (menunjukkan peningkatan ketara dalam kepekaan pemprosesan pusat otak dan kecekapan penghantaran sinaptik)`,
     rtTrendIncreased: (val) => `kelajuan tindak balas teras dipanjangkan sebanyak ${val} ms (menunjukkan keletihan perhatian dan penggunaan sumber korteks prefrontal di bawah beban kognitif berterusan seiring kemajuan ujian)`,
     rtTrendStable: "kelajuan tindak balas kekal stabil (menunjukkan tahap kestabilan pusat penyesuaian yang tinggi)",
-    
+
     accTrendIncreased: (val) => `kadar ketepatan meningkat sebanyak ${val}% (menunjukkan pesakit aktif belajar dan menguatkan mekanisme perencatan eksekutif melalui maklum balas neuro tingkah laku)`,
     accTrendDecreased: (val) => `kadar ketepatan menurun sebanyak ${val}% (mencerminkan penurunan kawalan impulsif dan peningkatan kadar keciciran)`,
     accTrendStable: "kadar ketepatan kekal rata (kawalan impuls stabil pada tahap garis dasar)",
-    
+
     statusSignificant: "hasil yang ketara",
     statusModerate: "kesan sederhana",
     statusFluctuating: "fasa pelarasan turun naik",
-    
+
     // AI Report Localizations
     reportTitle: "🧠 Laporan Perundingan Klinikal AI",
     reportCopilot: "Copilot Perubatan",
@@ -437,7 +437,7 @@ function DoctorDashboard({ lang = 'zh' }) {
   const [currentPatientId, setCurrentPatientId] = useState("");
   const [patientProfile, setPatientProfile] = useState(null); // 当前选中的患者基本资料
   const [showCreateModal, setShowCreateModal] = useState(false); // 控制新建档案弹窗显隐
-  
+
   // 新建患者表单状态
   const [createFormData, setCreateFormData] = useState({
     patient_id: "",
@@ -460,7 +460,7 @@ function DoctorDashboard({ lang = 'zh' }) {
   const [aiError, setAiError] = useState(null);
 
   const t = translations[lang] || translations.zh;
-  
+
   // Resolve localized report values directly from translations payload to avoid network requests on language toggle
   const currentReport = aiReport ? (aiReport.translations?.[lang] || aiReport) : null;
 
@@ -556,7 +556,7 @@ function DoctorDashboard({ lang = 'zh' }) {
         console.error("无法加载患者个人病历详情:", err);
         if (active) setPatientProfile(null);
       });
-      
+
     return () => {
       active = false;
     };
@@ -774,7 +774,7 @@ function DoctorDashboard({ lang = 'zh' }) {
     const c = stats?.classic || { total: 0, acc: 0, rt: 0 };
     const i = stats?.incongruent || { total: 0, acc: 0, rt: 0 };
     const s = stats?.shape || { total: 0, acc: 0, rt: 0 };
-    
+
     if (bestTraining?.includes("Color Go/No-Go")) {
       return {
         zh: `患者在基础颜色持续反应测试中表现出最低的正确率（${c.acc.toFixed(1)}%），这表明其在维持警觉和焦点稳定性方面存在基本障碍。建议优先进行本项训练，以稳固前额叶执行功能的基础控制基线。`,
@@ -783,7 +783,7 @@ function DoctorDashboard({ lang = 'zh' }) {
         ms: `Pesakit menunjukkan ketepatan terendah (${c.acc.toFixed(1)}%) dalam mod Warna Asas (Sustained Attention), menunjukkan kesukaran asas dalam mengekalkan kesiagaan fokus. Kami mengesyorkan bermula dengan modul ini untuk menstabilkan garis dasar eksekutif teras mereka.`
       }[lang] || "";
     }
-    
+
     if (bestTraining?.includes("Cognitive Flexibility")) {
       return {
         zh: `患者在逆向冲突规则的快速切换下表现出较大的延迟（${i.rt.toFixed(0)} ms）和正确率下降（${i.acc.toFixed(1)}%）。这种在克服肢体与本能映射时的障碍，突显了其高级脑区在执行认知重构和灵活性切换时存在瓶颈。建议加强本项训练以改善认知灵活性。`,
@@ -792,7 +792,7 @@ function DoctorDashboard({ lang = 'zh' }) {
         ms: `Pesakit menunjukkan penurunan ketepatan (${i.acc.toFixed(1)}%) dan kelewatan pemprosesan (${i.rt.toFixed(0)} ms) di bawah keadaan penukaran peraturan dalam Mod Minda Songsang. Halangan dalam mengatasi pilihan impulsif ini mencadangkan keutamaan latihan fleksibili.`
       }[lang] || "";
     }
-    
+
     if (bestTraining?.includes("Quantity Subitizing")) {
       return {
         zh: `患者在面对同色异量等复杂视觉刺激物时，正确率发生偏低（${s.acc.toFixed(1)}%），往往伴随较高的冲动误触。针对本模块的集中训练能够有效增强突触的负反馈制动能力，改善其精细动作控制和冲动行为抑制能力。`,
@@ -801,7 +801,7 @@ function DoctorDashboard({ lang = 'zh' }) {
         ms: `Pesakit menunjukkan ketepatan prestasi terendah (${s.acc.toFixed(1)}%) dalam Cari Kuantiti & Perencatan Tindak Balas. Ini dikaitkan dengan kadar ralat impuls yang tinggi. Latihan terfokus pada modul ini akan meningkatkan perencatan tingkah laku.`
       }[lang] || "";
     }
-    
+
     return bestTraining;
   };
 
@@ -1075,11 +1075,11 @@ function DoctorDashboard({ lang = 'zh' }) {
           </p>
 
           {/* 新建患者按钮，点击弹出模态对话框 */}
-          <button 
-            onClick={() => setShowCreateModal(true)} 
-            style={{ 
-              marginTop: '15px', background: '#2563eb', color: '#fff', border: 'none', 
-              padding: '8px 16px', borderRadius: '6px', fontSize: '13px', fontWeight: 'bold', 
+          <button
+            onClick={() => setShowCreateModal(true)}
+            style={{
+              marginTop: '15px', background: '#2563eb', color: '#fff', border: 'none',
+              padding: '8px 16px', borderRadius: '6px', fontSize: '13px', fontWeight: 'bold',
               cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px',
               boxShadow: '0 2px 4px rgba(37,99,235,0.2)'
             }}
@@ -1212,12 +1212,12 @@ function DoctorDashboard({ lang = 'zh' }) {
                       <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                       <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} minTickGap={10} hide={true} />
                       <YAxis stroke="#94a3b8" domain={['dataMin - 30', 'dataMax + 30']} fontSize={11} width={45} />
-                      <Tooltip 
-                        contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }} 
-                        formatter={(value) => [`${value} ms`, t.chartRTTooltip]} 
+                      <Tooltip
+                        contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
+                        formatter={(value) => [`${value} ms`, t.chartRTTooltip]}
                         labelFormatter={(label) => {
                           const dataPoint = chartData.find(d => d.name === label);
-                          return dataPoint && dataPoint.completedTime 
+                          return dataPoint && dataPoint.completedTime
                             ? `${label} (${lang === 'zh' ? '完成时间' : 'Completed'}: ${dataPoint.completedTime})`
                             : label;
                         }}
@@ -1234,12 +1234,12 @@ function DoctorDashboard({ lang = 'zh' }) {
                       <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                       <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} minTickGap={10} />
                       <YAxis stroke="#94a3b8" domain={[0, 100]} fontSize={11} width={45} tickFormatter={(tick) => `${tick}%`} />
-                      <Tooltip 
-                        contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }} 
-                        formatter={(value) => [`${value}%`, t.chartAccTooltip]} 
+                      <Tooltip
+                        contentStyle={{ backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
+                        formatter={(value) => [`${value}%`, t.chartAccTooltip]}
                         labelFormatter={(label) => {
                           const dataPoint = chartData.find(d => d.name === label);
-                          return dataPoint && dataPoint.completedTime 
+                          return dataPoint && dataPoint.completedTime
                             ? `${label} (${lang === 'zh' ? '完成时间' : 'Completed'}: ${dataPoint.completedTime})`
                             : label;
                         }}
@@ -1278,7 +1278,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                     <h4 style={{ margin: 0, color: '#0f172a', fontSize: '18px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>{t.reportTitle}</h4>
                     <span style={{ fontSize: '11px', background: '#eff6ff', color: '#2563eb', padding: '4px 12px', borderRadius: '20px', fontWeight: 'bold' }}>{t.reportCopilot}</span>
                   </div>
-                  
+
                   {/* Summary */}
                   <div style={{ fontSize: '13.5px', lineHeight: '1.7', color: '#334155', background: '#f8fafc', padding: '16px', borderRadius: '10px', borderLeft: '4px solid #cbd5e1', marginBottom: '20px' }}>
                     <h5 style={{ margin: '0 0 8px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>{t.reportSectionSummary}</h5>
@@ -1297,7 +1297,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                     const accentColor = isClassic ? '#2563eb' : (isIncongruent ? '#d97706' : '#10b981');
                     const accentBg = isClassic ? '#f0f7ff' : (isIncongruent ? '#fffbeb' : '#f0fdf4');
                     const accentBorder = isClassic ? '#dbeafe' : (isIncongruent ? '#fef3c7' : '#dcfce7');
-                    
+
                     return (
                       <div style={{ background: accentBg, border: `1px solid ${accentBorder}`, borderRadius: '10px', padding: '16px', marginBottom: '20px', borderLeft: `6px solid ${accentColor}` }}>
                         <h5 style={{ margin: '0 0 6px 0', color: '#0f172a', fontSize: '14px', fontWeight: 'bold' }}>
@@ -1352,9 +1352,9 @@ function DoctorDashboard({ lang = 'zh' }) {
             <form onSubmit={handleCreatePatientSubmit} style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '12px', fontWeight: 'bold', color: '#475569', marginBottom: '6px' }}>{t.modalPatientId}</label>
-                <input 
-                  type="text" 
-                  placeholder={t.modalPatientIdPlh} 
+                <input
+                  type="text"
+                  placeholder={t.modalPatientIdPlh}
                   value={createFormData.patient_id}
                   onChange={(e) => setCreateFormData({ ...createFormData, patient_id: e.target.value })}
                   style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
@@ -1364,9 +1364,9 @@ function DoctorDashboard({ lang = 'zh' }) {
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '12px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 'bold', color: '#475569', marginBottom: '6px' }}>{t.modalName}</label>
-                  <input 
-                    type="text" 
-                    placeholder={t.modalNamePlh} 
+                  <input
+                    type="text"
+                    placeholder={t.modalNamePlh}
                     value={createFormData.name}
                     onChange={(e) => setCreateFormData({ ...createFormData, name: e.target.value })}
                     style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
@@ -1375,8 +1375,8 @@ function DoctorDashboard({ lang = 'zh' }) {
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 'bold', color: '#475569', marginBottom: '6px' }}>{t.modalAge}</label>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     value={createFormData.age}
                     onChange={(e) => setCreateFormData({ ...createFormData, age: parseInt(e.target.value) || 8 })}
                     style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
@@ -1389,7 +1389,7 @@ function DoctorDashboard({ lang = 'zh' }) {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 'bold', color: '#475569', marginBottom: '6px' }}>{t.modalGender}</label>
-                  <select 
+                  <select
                     value={createFormData.gender}
                     onChange={(e) => setCreateFormData({ ...createFormData, gender: e.target.value })}
                     style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
@@ -1400,7 +1400,7 @@ function DoctorDashboard({ lang = 'zh' }) {
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 'bold', color: '#475569', marginBottom: '6px' }}>{t.modalSeverity}</label>
-                  <select 
+                  <select
                     value={createFormData.severity}
                     onChange={(e) => setCreateFormData({ ...createFormData, severity: e.target.value })}
                     style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
@@ -1414,7 +1414,7 @@ function DoctorDashboard({ lang = 'zh' }) {
               </div>
               <div>
                 <label style={{ display: 'block', fontSize: '12px', fontWeight: 'bold', color: '#475569', marginBottom: '6px' }}>{t.modalPresentation}</label>
-                <select 
+                <select
                   value={createFormData.presentation}
                   onChange={(e) => setCreateFormData({ ...createFormData, presentation: e.target.value })}
                   style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', outline: 'none', boxSizing: 'border-box', color: '#0f172a', backgroundColor: '#ffffff' }}
