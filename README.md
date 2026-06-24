@@ -24,28 +24,15 @@ Inspired by the rapid growth of _Digital Therapeutics (DTx)_ and the potential o
 
 *   **Gamified Testing Paradigms:** The patient terminal runs three core cognitive tasks targeting sustained attention (Color Go/No-Go), rule flexibility (Reverse Conflict), and response inhibition (Quantity Subitizing).
 *   **Real-Time Telemetry Tracking:** The application tracks the exact time-series accuracy and processing speed. 
-    For a patient session with $N$ total trials, the overall Accuracy $A$ is calculated as:
-    $$
-    A = \frac{\sum_{i=1}^{N} C_i}{N} \times 100\%
-    $$
-    where $C_i \in \{0, 1\}$ denotes whether the $i$-th trial is correct.
-    
-    The average Reaction Time $RT_{\text{avg}}$ for registered correct hits (where $RT_k > 0$) is calculated as:
-    $$
-    RT_{\text{avg}} = \frac{1}{|K|} \sum_{k \in K} RT_k
-    $$
-    where $K \subseteq \{1, \dots, N\}$ is the set of correct hit trial indices.
+    For a patient session with $N$ total trials, the overall Accuracy $A$ is calculated as $A = \frac{\sum_{i=1}^{N} C_i}{N} \times 100\%$, where $C_i \in \{0, 1\}$ denotes whether the $i$-th trial is correct.
+    The average Reaction Time $RT_{\text{avg}}$ for registered correct hits (where $RT_k > 0$) is calculated as $RT_{\text{avg}} = \frac{1}{|K|} \sum_{k \in K} RT_k$, where $K \subseteq \{1, \dots, N\}$ is the set of correct hit trial indices.
 *   **3-Track ADHD Presentation Customization:** 
     *   *Inattentive Type:* Calibrates game sequence to focus on sustained attention: `["CLASSIC", "CLASSIC", "INCONGRUENT"]`.
     *   *Hyperactive-Impulsive Type:* Calibrates game sequence to prioritize motor inhibition: `["SHAPE_COUNT", "SHAPE_COUNT", "INCONGRUENT"]`.
     *   *Combined Type:* Calibrates game sequence to a balanced curriculum: `["CLASSIC", "INCONGRUENT", "SHAPE_COUNT"]`.
-*   **Severity-Based Adaptive Pacing (Severity):** Pacing difficulty automatically scales to prevent cognitive overload. The stimulus duration $D_s$ and the error ceiling $E_{\max}$ are dynamically calibrated based on clinical severity:
-    $$
-    D_s(\text{Severity}) = \begin{cases} 1500\text{ ms} & \text{if Severity} = \text{Mild} \\ 2000\text{ ms} & \text{if Severity} = \text{Moderate} \\ 2500\text{ ms} & \text{if Severity} = \text{Severe} \end{cases}
-    $$
-    $$
-    E_{\max}(\text{Severity}) = \begin{cases} 7 & \text{if Severity} = \text{Mild} \\ 5 & \text{if Severity} = \text{Moderate} \\ 3 & \text{if Severity} = \text{Severe} \end{cases}
-    $$
+*   **Severity-Based Adaptive Pacing (Severity):** Pacing difficulty automatically scales to prevent cognitive overload. The stimulus duration $D_s$ and the error ceiling $E_{\max}$ are dynamically calibrated based on clinical severity:  
+    $D_s(\text{Severity}) = \begin{cases} 1500\text{ ms} & \text{if Severity} = \text{Mild} \\ 2000\text{ ms} & \text{if Severity} = \text{Moderate} \\ 2500\text{ ms} & \text{if Severity} = \text{Severe} \end{cases}$  
+    $E_{\max}(\text{Severity}) = \begin{cases} 7 & \text{if Severity} = \text{Mild} \\ 5 & \text{if Severity} = \text{Moderate} \\ 3 & \text{if Severity} = \text{Severe} \end{cases}$
 *   **Clinical-Grade Data Safety & Batch Synchronization:** Logs are cached locally in the patient terminal and uploaded in a single transaction via `POST /api/logs` to prevent concurrency connection storms and database locks.
 *   **Asynchronous Race Condition Isolation:** Async state updates on the doctor dashboard are protected using the `active` cleanup hook pattern, preventing stale API responses from corrupting active visualizations.
 *   **AI Medical Copilot & Patient Analyzer Agent:** Integrates the Gemini API (`gemini-3.1-flash-lite`) to generate clinical diagnostic summaries, prioritize recommended training modalities, and map target cognitive domains.
@@ -59,11 +46,7 @@ Inspired by the rapid growth of _Digital Therapeutics (DTx)_ and the potential o
 We built this project using a modern serverless stack:
 *   **Frontend:** Built with React + Vite, deployed on **Vercel** for edge-optimized delivery.
 *   **Backend:** Designed with Python + FastAPI, utilizing threadpools to execute relational operations without blocking the event loop.
-*   **Database (The Core):** Powered by **Amazon Aurora Serverless v2 (PostgreSQL)**. We secure it using IAM Database Authentication via the AWS SDK (`boto3`) to dynamically request a 15-minute temporary database token:
-    $$
-    \text{AuthToken} = \text{generate\_db\_auth\_token}(\text{DBHostname}, \text{Port}, \text{DBUsername}, \text{Region})
-    $$
-    This token acts as the database password, requiring no static credentials to be stored.
+*   **Database (The Core):** Powered by **Amazon Aurora Serverless v2 (PostgreSQL)**. We secure it using IAM Database Authentication via the AWS SDK (`boto3`) to dynamically request a 15-minute temporary database token: $\text{AuthToken} = \text{generate\_db\_auth\_token}(\text{DBHostname}, \text{Port}, \text{DBUsername}, \text{Region})$. This token acts as the database password, requiring no static credentials to be stored.
 
     ```python
     def get_auth_token():
