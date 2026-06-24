@@ -30,9 +30,15 @@ Inspired by the rapid growth of _Digital Therapeutics (DTx)_ and the potential o
     *   *Inattentive Type:* Calibrates game sequence to focus on sustained attention: `["CLASSIC", "CLASSIC", "INCONGRUENT"]`.
     *   *Hyperactive-Impulsive Type:* Calibrates game sequence to prioritize motor inhibition: `["SHAPE_COUNT", "SHAPE_COUNT", "INCONGRUENT"]`.
     *   *Combined Type:* Calibrates game sequence to a balanced curriculum: `["CLASSIC", "INCONGRUENT", "SHAPE_COUNT"]`.
-*   **Severity-Based Adaptive Pacing (Severity):** Pacing difficulty automatically scales to prevent cognitive overload. The stimulus duration $D_s$ and the error ceiling $E_{\max}$ are dynamically calibrated based on clinical severity:  
-    $D_s(\text{Severity}) = \begin{cases} 1500\text{ ms} & \text{if Severity} = \text{Mild} \\\\ 2000\text{ ms} & \text{if Severity} = \text{Moderate} \\\\ 2500\text{ ms} & \text{if Severity} = \text{Severe} \end{cases}$  
-    $E_{\max}(\text{Severity}) = \begin{cases} 7 & \text{if Severity} = \text{Mild} \\\\ 5 & \text{if Severity} = \text{Moderate} \\\\ 3 & \text{if Severity} = \text{Severe} \end{cases}$
+*   **Severity-Based Adaptive Pacing (Severity):** Pacing difficulty automatically scales to prevent cognitive overload. The stimulus duration $D_s$ and the error ceiling $E_{\max}$ are dynamically calibrated based on clinical severity.
+
+$$
+D_s(\text{Severity}) = \begin{cases} 1500\text{ ms} & \text{if Severity} = \text{Mild} \\ 2000\text{ ms} & \text{if Severity} = \text{Moderate} \\ 2500\text{ ms} & \text{if Severity} = \text{Severe} \end{cases}
+$$
+
+$$
+E_{\max}(\text{Severity}) = \begin{cases} 7 & \text{if Severity} = \text{Mild} \\ 5 & \text{if Severity} = \text{Moderate} \\ 3 & \text{if Severity} = \text{Severe} \end{cases}
+$$
 *   **Clinical-Grade Data Safety & Batch Synchronization:** Logs are cached locally in the patient terminal and uploaded in a single transaction via `POST /api/logs` to prevent concurrency connection storms and database locks.
 *   **Asynchronous Race Condition Isolation:** Async state updates on the doctor dashboard are protected using the `active` cleanup hook pattern, preventing stale API responses from corrupting active visualizations.
 *   **AI Medical Copilot & Patient Analyzer Agent:** Integrates the Gemini API (`gemini-3.1-flash-lite`) to generate clinical diagnostic summaries, prioritize recommended training modalities, and map target cognitive domains.
