@@ -6,10 +6,25 @@ env/
 # Compilation cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Environment files
 .env
 .env.*
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# Package Builds
+build/
+dist/
+*.egg-info/
+.eggs/
 
 # System & DB
 .DS_Store
