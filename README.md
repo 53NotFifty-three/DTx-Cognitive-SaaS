@@ -52,7 +52,7 @@ $$
 We built this project using a modern serverless stack:
 *   **Frontend:** Built with React + Vite, deployed on **Vercel** for edge-optimized delivery.
 *   **Backend:** Designed with Python + FastAPI, utilizing threadpools to execute relational operations without blocking the event loop.
-*   **Database (The Core):** Powered by **Amazon Aurora Serverless v2 (PostgreSQL)**. We secure it using IAM Database Authentication via the AWS SDK (`boto3`) to dynamically request a 15-minute temporary database token: $\text{AuthToken} = \text{generate\_db\_auth\_token}(\text{DBHostname}, \text{Port}, \text{DBUsername}, \text{Region})$. This token acts as the database password, requiring no static credentials to be stored.
+*   **Database (The Core):** Powered by **Amazon Aurora Serverless v2 (PostgreSQL)**. We secure it using IAM Database Authentication via the AWS SDK (`boto3`) to dynamically request a 15-minute temporary database token: `AuthToken = generate_db_auth_token(DBHostname, Port, DBUsername, Region)`. This token acts as the database password, requiring no static credentials to be stored.
 
     ```python
     def get_auth_token():
