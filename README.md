@@ -144,8 +144,8 @@ We use `concurrently` to orchestrate both the FastAPI backend and Vite frontend 
 ### Setup
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/dtx-cognitive-training.git
-cd dtx-cognitive-training
+git clone https://github.com/53NotFifty-three/DTx-Cognitive-SaaS.git
+cd DTx-Cognitive-SaaS
 
 # 2. Install root dependencies
 npm install
